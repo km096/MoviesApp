@@ -88,8 +88,12 @@ extension PeopleVC: UICollectionViewDelegate, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if indexPath.row == (person.count / 2 ) - 2 {
-            fetchData(endPoint: EndPoint.person)
+        print("row: \(indexPath.row)")
+        print("item: \(indexPath.item)")
+
+        if indexPath.row == person.count - 3 {
+            
+//            fetchData(endPoint: EndPoint.person)
         }
     }
     
