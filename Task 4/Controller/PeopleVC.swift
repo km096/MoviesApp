@@ -52,12 +52,10 @@ class PeopleVC: UIViewController {
     @objc func tapHandle(_ sender: UITapGestureRecognizer) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "ActorVC")
                         as? ActorVC else {return}
-        let index = IndexPath(item: sender.view!.tag, section: 0)
-        vc.actor = person[index.item]
-        print("index: \(index.item)")
+        let index = IndexPath(row: sender.view!.tag, section: 0)
+        vc.actor = person[index.row]
         present(vc, animated: true)
     }
-    
     
 
 }
@@ -72,14 +70,14 @@ extension PeopleVC: UICollectionViewDelegate, UICollectionViewDataSource,
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PeopleCV", for: indexPath) as? PeopleCV {
-            let person = person[indexPath.item]
+            let person = person[indexPath.row]
             cell.lblName.text = person.name
             cell.imgPersonPhoto.kf.setImage(with: URL(string: Api.baseImageUrl+(person.profilePath ?? "")), options: [.cacheOriginalImage] )
             cell.imgPersonPhoto.addShadow(containerView: cell.contentView, color: UIColor.black.cgColor, shadowOpacity: 0.7, shadowRadius: 10, cornerRadius: 10)
             
             let tap = UITapGestureRecognizer(target: self, action: #selector(tapHandle))
             cell.containerView.addGestureRecognizer(tap)
-            cell.containerView.tag = indexPath.item
+            cell.containerView.tag = indexPath.row
             
             return cell
         }else {
@@ -88,12 +86,9 @@ extension PeopleVC: UICollectionViewDelegate, UICollectionViewDataSource,
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        print("row: \(indexPath.row)")
-        print("item: \(indexPath.item)")
 
         if indexPath.row == person.count - 3 {
-            
-//            fetchData(endPoint: EndPoint.person)
+            fetchData(endPoint: EndPoint.person)
         }
     }
     

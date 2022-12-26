@@ -23,5 +23,10 @@ extension UINavigationItem {
         
     }
     
+    func showAlertView() {
+        let alert = UIAlertController(title: "", message: "", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "", style: .default))
+    }
+    
 
 }

@@ -25,9 +25,11 @@ class ActorVC: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.layer.cornerRadius = 15
+        
         setupInfo()
-        imgActor.addShadow(containerView: containerView, color: UIColor.black.cgColor, shadowOpacity: 0.5, shadowRadius: 5, cornerRadius: 15)
+        collectionView.layer.cornerRadius = 15
+        imgActor.addShadow(containerView: containerView, color: UIColor.black.cgColor,
+            shadowOpacity: 0.5, shadowRadius: 5, cornerRadius: 15)
         
     }
     
@@ -35,7 +37,8 @@ class ActorVC: UIViewController {
         lblName.text = actor?.name
         lblGender.text = "\(actor?.gender ?? 0)".localized
         lblKnownFor.text = actor?.knownForDepartment
-        imgActor.kf.setImage(with: URL(string: Api.baseImageUrl+(actor?.profilePath ?? "")), options: [.cacheOriginalImage] )
+        imgActor.kf.setImage(with: URL(string: Api.baseImageUrl+(actor?.profilePath ?? "")),
+            options: [.cacheOriginalImage] )
     }
 
     @IBAction func btnBack(_ sender: Any) {
@@ -53,7 +56,7 @@ extension ActorVC: UICollectionViewDelegate, UICollectionViewDataSource, UIColle
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "knownForCell", for: indexPath) as? knownForCVC {
-            let actorInfo = self.actor?.knownFor?[indexPath.item]
+            let actorInfo = self.actor?.knownFor?[indexPath.row]
             cell.imgMoviePoster.kf.setImage(with: URL(string: Api.baseImageUrl+(actorInfo?.posterPath ?? "")), options: [.cacheOriginalImage])
             cell.imgMoviePoster.roundCorner(cornerRadius: 15)
             return cell
