@@ -8,10 +8,7 @@
 import UIKit
 import Kingfisher
 
-
 class PeopleVC: UIViewController {
-    
-
 
     @IBOutlet weak var collectionView: UICollectionView!
     

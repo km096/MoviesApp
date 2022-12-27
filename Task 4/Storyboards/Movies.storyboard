@@ -95,7 +95,7 @@
                                                         <constraint firstAttribute="height" constant="180" id="WNz-0R-XUi"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fF-jJ-UE2">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8fF-jJ-UE2" customClass="ArrowButoon" customModule="Task_4" customModuleProvider="target">
                                                     <rect key="frame" x="321" y="115" width="7" height="7"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="7" id="9tL-sx-d09"/>
