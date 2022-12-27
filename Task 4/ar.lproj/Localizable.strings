@@ -1,15 +1,16 @@
 //
+
 "lang" = "ar";
-
 "changeLanguage" = "تغيير اللغة";
-
+"changeLangMsg" = "هذا التطبيق سوف يغلق لتغيير اللغة";
+"ok" = "موافق";
+"cancel" = "إلغاء";
 "1" = "أنثي";
 "2" = "ذكر";
 "lang" = "en";
 "movies" = "أفلام";
 "people" = "أشخاص";
-"popular" = "شائع";
+"popular" = "شائعة";
 "upcoming" = "قادمة";
-"nowPlaying" = "يعرض حالياً";
-"details" = "تفاصيل";
+"nowPlaying" = "تعرض حالياً";
 

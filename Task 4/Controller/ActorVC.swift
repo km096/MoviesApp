@@ -15,7 +15,6 @@ class ActorVC: UIViewController {
     @IBOutlet weak var lblGender: UILabel!
     @IBOutlet weak var lblKnownFor: UILabel!
     @IBOutlet weak var containerView: UIView!
-    
     @IBOutlet weak var collectionView: UICollectionView!
     
     var actor: Person?
@@ -25,7 +24,7 @@ class ActorVC: UIViewController {
         
         collectionView.delegate = self
         collectionView.dataSource = self
-        
+
         setupInfo()
         collectionView.layer.cornerRadius = 15
         imgActor.addShadow(containerView: containerView, color: UIColor.black.cgColor,

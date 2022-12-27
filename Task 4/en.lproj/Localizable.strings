@@ -1,6 +1,11 @@
-//
-"lang" = "en";
+ //
 
+
+"lang" = "en";
+"changeLanguage" = "Change Language";
+"changeLangMsg" = "The app will exit to switch language";
+"ok" = "OK";
+"cancel" = "Cancel";
 "1" = "Female";
 "2" = "Male";
 "lang" = "ع";
@@ -9,6 +14,3 @@
 "popular" = "Popular";
 "upcoming" = "Upcoming";
 "nowPlaying" = "NowPlaying";
-"details" = "details";
-
-

@@ -12,15 +12,15 @@
 		F28F44522958654300FF1A04 /* PeopleCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28F44512958654300FF1A04 /* PeopleCV.swift */; };
 		F28F4454295881B800FF1A04 /* PeopleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28F4453295881B800FF1A04 /* PeopleModel.swift */; };
 		F28F445629589C7900FF1A04 /* ActorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28F445529589C7900FF1A04 /* ActorVC.swift */; };
-		F28F44582958ABE500FF1A04 /* People.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F28F44572958ABE500FF1A04 /* People.storyboard */; };
 		F28F445A2958D64200FF1A04 /* knownForCVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28F44592958D64200FF1A04 /* knownForCVC.swift */; };
+		F2A43BF7295B369C0077A2DA /* leftToRightSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A43BF6295B369C0077A2DA /* leftToRightSV.swift */; };
+		F2A43BFF295B8FE10077A2DA /* People.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A43BFE295B8FE10077A2DA /* People.storyboard */; };
 		F2B0CE4C295749C1008F2965 /* MovieListSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B0CE4B295749C1008F2965 /* MovieListSegment.swift */; };
 		F2B0CE502957BA6E008F2965 /* LocalizedStringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B0CE4F2957BA6E008F2965 /* LocalizedStringExt.swift */; };
 		F2B0CE522957CF43008F2965 /* ButtonDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B0CE512957CF43008F2965 /* ButtonDirection.swift */; };
 		F2DDC295295344AE0000AE06 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DDC294295344AE0000AE06 /* MainTabBar.swift */; };
 		F2DDC297295348BD0000AE06 /* PeopleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DDC296295348BD0000AE06 /* PeopleVC.swift */; };
 		F2DDC299295361990000AE06 /* Movies.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2DDC298295361990000AE06 /* Movies.storyboard */; };
-		F2DDC2A32953A4000000AE06 /* NavBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DDC2A22953A4000000AE06 /* NavBarButton.swift */; };
 		F2DFA9AB2956069200E0760E /* UITabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DFA9AA2956069200E0760E /* UITabBarItem.swift */; };
 		F2DFA9B02956368700E0760E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F2DFA9B22956368700E0760E /* Localizable.strings */; };
 		F2DFA9B5295660E400E0760E /* BorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DFA9B4295660E400E0760E /* BorderButton.swift */; };
@@ -47,15 +47,15 @@
 		F28F44512958654300FF1A04 /* PeopleCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleCV.swift; sourceTree = "<group>"; };
 		F28F4453295881B800FF1A04 /* PeopleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleModel.swift; sourceTree = "<group>"; };
 		F28F445529589C7900FF1A04 /* ActorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorVC.swift; sourceTree = "<group>"; };
-		F28F44572958ABE500FF1A04 /* People.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = People.storyboard; sourceTree = "<group>"; };
 		F28F44592958D64200FF1A04 /* knownForCVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = knownForCVC.swift; sourceTree = "<group>"; };
+		F2A43BF6295B369C0077A2DA /* leftToRightSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = leftToRightSV.swift; sourceTree = "<group>"; };
+		F2A43BFE295B8FE10077A2DA /* People.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = People.storyboard; sourceTree = "<group>"; };
 		F2B0CE4B295749C1008F2965 /* MovieListSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListSegment.swift; sourceTree = "<group>"; };
 		F2B0CE4F2957BA6E008F2965 /* LocalizedStringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStringExt.swift; sourceTree = "<group>"; };
 		F2B0CE512957CF43008F2965 /* ButtonDirection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonDirection.swift; sourceTree = "<group>"; };
 		F2DDC294295344AE0000AE06 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		F2DDC296295348BD0000AE06 /* PeopleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleVC.swift; sourceTree = "<group>"; };
 		F2DDC298295361990000AE06 /* Movies.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Movies.storyboard; sourceTree = "<group>"; };
-		F2DDC2A22953A4000000AE06 /* NavBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarButton.swift; sourceTree = "<group>"; };
 		F2DFA9AA2956069200E0760E /* UITabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarItem.swift; sourceTree = "<group>"; };
 		F2DFA9AC295634FF00E0760E /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Main.strings; sourceTree = "<group>"; };
 		F2DFA9AD295634FF00E0760E /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 				F2E5D36E2950A68600A1EB3A /* Main.storyboard */,
 				F2DDC298295361990000AE06 /* Movies.storyboard */,
 				F24B000E2954730F0026C26A /* Discover.storyboard */,
-				F28F44572958ABE500FF1A04 /* People.storyboard */,
+				F2A43BFE295B8FE10077A2DA /* People.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -125,7 +125,6 @@
 				F2DFA9AA2956069200E0760E /* UITabBarItem.swift */,
 				F2E5D3852950C11100A1EB3A /* UIImageView.swift */,
 				F2E5D3802950AD3F00A1EB3A /* UIView.swift */,
-				F2DDC2A22953A4000000AE06 /* NavBarButton.swift */,
 				F2B0CE4B295749C1008F2965 /* MovieListSegment.swift */,
 				F2B0CE512957CF43008F2965 /* ButtonDirection.swift */,
 			);
@@ -188,6 +187,7 @@
 				F2DFA9B4295660E400E0760E /* BorderButton.swift */,
 				F28F44512958654300FF1A04 /* PeopleCV.swift */,
 				F28F44592958D64200FF1A04 /* knownForCVC.swift */,
+				F2A43BF6295B369C0077A2DA /* leftToRightSV.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -277,7 +277,7 @@
 				F2E5D3722950A68900A1EB3A /* Assets.xcassets in Resources */,
 				F24B000F2954730F0026C26A /* Discover.storyboard in Resources */,
 				F2E5D3702950A68600A1EB3A /* Main.storyboard in Resources */,
-				F28F44582958ABE500FF1A04 /* People.storyboard in Resources */,
+				F2A43BFF295B8FE10077A2DA /* People.storyboard in Resources */,
 				F2DDC299295361990000AE06 /* Movies.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -344,11 +344,11 @@
 				F28F4454295881B800FF1A04 /* PeopleModel.swift in Sources */,
 				F28F445629589C7900FF1A04 /* ActorVC.swift in Sources */,
 				F2DFA9B729566F7D00E0760E /* ApiManager.swift in Sources */,
-				F2DDC2A32953A4000000AE06 /* NavBarButton.swift in Sources */,
 				F2E5D37F2950AC9D00A1EB3A /* MoviesTVC.swift in Sources */,
 				F2E5D36B2950A68600A1EB3A /* SceneDelegate.swift in Sources */,
 				F2DDC295295344AE0000AE06 /* MainTabBar.swift in Sources */,
 				F2DFA9AB2956069200E0760E /* UITabBarItem.swift in Sources */,
+				F2A43BF7295B369C0077A2DA /* leftToRightSV.swift in Sources */,
 				F2EDD57A2951ED4E00EBFBDD /* Constants.swift in Sources */,
 				F2B0CE502957BA6E008F2965 /* LocalizedStringExt.swift in Sources */,
 				F28F445A2958D64200FF1A04 /* knownForCVC.swift in Sources */,

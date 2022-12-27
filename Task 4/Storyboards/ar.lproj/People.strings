@@ -1,0 +1,24 @@
+
+/* Class = "UILabel"; text = "Gender:"; ObjectID = "3B1-eM-bxM"; */
+"3B1-eM-bxM.text" = "Gender:";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "50S-Pu-sVI"; */
+"50S-Pu-sVI.text" = "Label";
+
+/* Class = "UILabel"; text = "Known for:"; ObjectID = "A4g-ca-pz4"; */
+"A4g-ca-pz4.text" = "Known for:";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "LEj-UB-1TI"; */
+"LEj-UB-1TI.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Gender:"; ObjectID = "Lau-i8-Lne"; */
+"Lau-i8-Lne.text" = "Gender:";
+
+/* Class = "UILabel"; text = "Known for:"; ObjectID = "LrX-oz-T0p"; */
+"LrX-oz-T0p.text" = "Known for:";
+
+/* Class = "UILabel"; text = "Name:"; ObjectID = "PyY-fN-uz2"; */
+"PyY-fN-uz2.text" = "Name:";
+
+/* Class = "UILabel"; text = "name"; ObjectID = "rik-Yt-ckp"; */
+"rik-Yt-ckp.text" = "name";

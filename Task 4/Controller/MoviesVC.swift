@@ -8,7 +8,6 @@
 import UIKit
 import Alamofire
 import Kingfisher
-import MOLH
 
 class MoviesVC: UIViewController {
 
@@ -16,6 +15,7 @@ class MoviesVC: UIViewController {
     @IBOutlet weak var lblMovie2List: UILabel!
     @IBOutlet weak var txtSearchField: UITextField!
     @IBOutlet weak var segControl: UISegmentedControl!
+    @IBOutlet weak var btnChangeLang: UIButton!
     
     var currentMovies = SegmentState()
     var popularMovies = SegmentState()
@@ -37,7 +37,9 @@ class MoviesVC: UIViewController {
         fetchData(endPoint: EndPoint.popular)
         changeLblTitle(string: "popular".localized)
         segControl.addTitle(titles: ["popular".localized, "upcoming".localized, "nowPlaying".localized])
-        self.navigationItem.customNavBar(btntitle: "lang".localized, title: "movies")
+        btnChangeLang.setTitle("lang".localized, for: .normal)
+        self.title = "movies".localized
+
 
     }
     
@@ -103,9 +105,21 @@ class MoviesVC: UIViewController {
         } else {
             destinationVC.movie = currentMovies.movie[indexpath.row]
         }
-        destinationVC.title = "movies".localized
         navigationController?.pushViewController(destinationVC, animated: true)
     }
+    
+    @IBAction func btnChangeLanguage (_ sender: UIButton) {
+        let currentLang = Locale.current.language.languageCode?.identifier
+        let newlanguage = currentLang == "en" ? "ar" : "en"
+        let alert = UIAlertController(title: "changeLanguage".localized, message: "changeLangMsg".localized, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "ok".localized, style: .default, handler: { action in
+            UserDefaults.standard.set([newlanguage], forKey: "AppleLanguages")
+            exit(0)
+        }))
+        alert.addAction(UIAlertAction(title: "cancel".localized, style: .cancel, handler: nil))
+        self.present(alert, animated: true)
+    }
+
     
     func getSegmentMovies (movieState: SegmentState, endPoint: String) {
         self.currentMovies.movie = movieState.movie

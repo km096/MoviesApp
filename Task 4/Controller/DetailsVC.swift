@@ -14,10 +14,9 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var imgPoster: UIImageView!
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var frontView: UIView!
-    
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblOverview: UILabel!
-    @IBOutlet weak var btnDetalis: UIButton!
+    
     var movie: Movies?
     
     override func viewDidLoad() {
@@ -26,16 +25,13 @@ class DetailsVC: UIViewController {
         frontView.backgroundColor = .clear
         backView.layer.cornerRadius = 5
         backView.alpha = 0.5
-        btnDetalis.layer.cornerRadius = 5
         
         setupMovieDetails()
+        self.title = "movies".localized
         imgPoster.addShadow (
             containerView: containerView, color: UIColor.black.cgColor,
             shadowOpacity: 0.7, shadowRadius: 10, cornerRadius: 10
-        )
-        btnDetalis.setTitle("details".localized, for: .normal)
-
-        
+        )        
     }
     
     func setupMovieDetails() {
