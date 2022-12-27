@@ -28,7 +28,6 @@ class MoviesTVC: UITableViewCell {
         gradientView.addGradient()
         backView.backgroundColor = .clear
         imgPoster.roundCorner(cornerRadius: 15)
-//        btnGoToDetails.changeDirection()
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

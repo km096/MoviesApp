@@ -251,7 +251,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="btnChangeLang" destination="DUt-dP-MHd" id="LGr-LN-dRg"/>
-                        <outlet property="lblMovie2List" destination="w5E-kW-Zf4" id="BB2-ce-aQm"/>
+                        <outlet property="lblMovieList" destination="w5E-kW-Zf4" id="BB2-ce-aQm"/>
                         <outlet property="segControl" destination="nRY-Sj-UQJ" id="cVb-mA-ZYO"/>
                         <outlet property="tableView" destination="XJ2-rC-SHM" id="1gO-Ap-SUz"/>
                         <outlet property="txtSearchField" destination="Few-z5-OjF" id="xM1-Yn-c1z"/>

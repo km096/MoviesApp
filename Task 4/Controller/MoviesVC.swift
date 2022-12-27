@@ -12,7 +12,7 @@ import Kingfisher
 class MoviesVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var lblMovie2List: UILabel!
+    @IBOutlet weak var lblMovieList: UILabel!
     @IBOutlet weak var txtSearchField: UITextField!
     @IBOutlet weak var segControl: UISegmentedControl!
     @IBOutlet weak var btnChangeLang: UIButton!
@@ -39,8 +39,6 @@ class MoviesVC: UIViewController {
         segControl.addTitle(titles: ["popular".localized, "upcoming".localized, "nowPlaying".localized])
         btnChangeLang.setTitle("lang".localized, for: .normal)
         self.title = "movies".localized
-
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -49,9 +47,8 @@ class MoviesVC: UIViewController {
         tableView.reloadData()
     }
     
-    
     func changeLblTitle(string: String){
-        lblMovie2List.text = string
+        lblMovieList.text = string
     }
     
     func filterText(_ text: String) {
@@ -66,7 +63,6 @@ class MoviesVC: UIViewController {
     
     func fetchData(endPoint: String){
         let currentLang = Locale.current.language.languageCode!.identifier
-
         let otherParameters: [String: Any] = ["language": currentLang, "page": currentMovies.pageNumber+1]
 
         ApiManager.sharedInstance.fetchApiData(url: Api.baseUrl+endPoint, parameters: Api.parameters.merging(otherParameters, uniquingKeysWith: {(first, _) in first}), responseModel: Response.self) { response in
@@ -109,15 +105,7 @@ class MoviesVC: UIViewController {
     }
     
     @IBAction func btnChangeLanguage (_ sender: UIButton) {
-        let currentLang = Locale.current.language.languageCode?.identifier
-        let newlanguage = currentLang == "en" ? "ar" : "en"
-        let alert = UIAlertController(title: "changeLanguage".localized, message: "changeLangMsg".localized, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "ok".localized, style: .default, handler: { action in
-            UserDefaults.standard.set([newlanguage], forKey: "AppleLanguages")
-            exit(0)
-        }))
-        alert.addAction(UIAlertAction(title: "cancel".localized, style: .cancel, handler: nil))
-        self.present(alert, animated: true)
+        LocalizationManager.switchLanguage(viewController: self)
     }
 
     
