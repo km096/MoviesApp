@@ -16,7 +16,6 @@
 		F2A43C00295B91060077A2DA /* People.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2A43C02295B91060077A2DA /* People.storyboard */; };
 		F2A43C0C295BB3C60077A2DA /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A43C0B295BB3C60077A2DA /* LocalizationManager.swift */; };
 		F2B0CE4C295749C1008F2965 /* MovieListSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B0CE4B295749C1008F2965 /* MovieListSegment.swift */; };
-		F2B0CE502957BA6E008F2965 /* LocalizedStringExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B0CE4F2957BA6E008F2965 /* LocalizedStringExt.swift */; };
 		F2DDC295295344AE0000AE06 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DDC294295344AE0000AE06 /* MainTabBar.swift */; };
 		F2DDC297295348BD0000AE06 /* PeopleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DDC296295348BD0000AE06 /* PeopleVC.swift */; };
 		F2DDC299295361990000AE06 /* Movies.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2DDC298295361990000AE06 /* Movies.storyboard */; };
@@ -50,7 +49,6 @@
 		F2A43C0A295B91AF0077A2DA /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/People.strings; sourceTree = "<group>"; };
 		F2A43C0B295BB3C60077A2DA /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
 		F2B0CE4B295749C1008F2965 /* MovieListSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListSegment.swift; sourceTree = "<group>"; };
-		F2B0CE4F2957BA6E008F2965 /* LocalizedStringExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedStringExt.swift; sourceTree = "<group>"; };
 		F2DDC294295344AE0000AE06 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		F2DDC296295348BD0000AE06 /* PeopleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleVC.swift; sourceTree = "<group>"; };
 		F2DDC298295361990000AE06 /* Movies.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Movies.storyboard; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 			children = (
 				F2DFA9B629566F7D00E0760E /* ApiManager.swift */,
 				F2EDD5792951ED4E00EBFBDD /* Constants.swift */,
-				F2B0CE4F2957BA6E008F2965 /* LocalizedStringExt.swift */,
 				F2A43C0B295BB3C60077A2DA /* LocalizationManager.swift */,
 			);
 			path = Utils;
@@ -344,7 +341,6 @@
 				F2A43C0C295BB3C60077A2DA /* LocalizationManager.swift in Sources */,
 				F2A43BF7295B369C0077A2DA /* ArrowButoon.swift in Sources */,
 				F2EDD57A2951ED4E00EBFBDD /* Constants.swift in Sources */,
-				F2B0CE502957BA6E008F2965 /* LocalizedStringExt.swift in Sources */,
 				F28F445A2958D64200FF1A04 /* knownForCVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

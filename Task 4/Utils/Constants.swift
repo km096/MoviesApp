@@ -5,7 +5,6 @@
 //  Created by ME-MAC on 12/20/22.
 //
 import Foundation
-import UIKit
 import Alamofire
 
 struct Api {
@@ -15,7 +14,7 @@ struct Api {
 
 }
 
-struct SegmentState {
+struct SegmentMovieList {
     var pageNumber: Int = 0
     var movie: [Movies] = [Movies]()
 }

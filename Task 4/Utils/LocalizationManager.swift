@@ -11,12 +11,15 @@ import UIKit
 
 class LocalizationManager{
     
-    static func getCurrentLang() -> String? {
+    static let sharedInstance = LocalizationManager()
+    private init() {}
+    
+    func getCurrentLang() -> String? {
         return Locale.current.language.languageCode!.identifier
     }
     
     
-    static func switchLanguage(viewController : UIViewController){
+    func switchLanguage(viewController : UIViewController){
         let newlanguage = getCurrentLang() == "en" ? "ar" : "en"
         let alert = UIAlertController(title: "changeLanguage".localized, message: "changeLangMsg".localized, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "ok".localized, style: .default, handler: { action in

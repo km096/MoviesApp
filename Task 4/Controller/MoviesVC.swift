@@ -17,10 +17,10 @@ class MoviesVC: UIViewController {
     @IBOutlet weak var segControl: UISegmentedControl!
     @IBOutlet weak var btnChangeLang: UIButton!
     
-    var currentMovies = SegmentState()
-    var popularMovies = SegmentState()
-    var upcomingMovies = SegmentState()
-    var nowPlayingMovies = SegmentState()
+    var currentMovies = SegmentMovieList()
+    var popularMovies = SegmentMovieList()
+    var upcomingMovies = SegmentMovieList()
+    var nowPlayingMovies = SegmentMovieList()
     
     var filteredMovies = [Movies]()
     var isFiltered = false
@@ -105,15 +105,15 @@ class MoviesVC: UIViewController {
     }
     
     @IBAction func btnChangeLanguage (_ sender: UIButton) {
-        LocalizationManager.switchLanguage(viewController: self)
+        LocalizationManager.sharedInstance.switchLanguage(viewController: self)
     }
 
     
-    func getSegmentMovies (movieState: SegmentState, endPoint: String) {
-        self.currentMovies.movie = movieState.movie
-        self.currentMovies.pageNumber = movieState.pageNumber
+    func getSegmentMovies (movieList: SegmentMovieList, endPoint: String) {
+        self.currentMovies.movie = movieList.movie
+        self.currentMovies.pageNumber = movieList.pageNumber
         
-        if movieState.pageNumber == 0 {
+        if movieList.pageNumber == 0 {
             fetchData(endPoint: endPoint)
         }
     }
@@ -122,11 +122,11 @@ class MoviesVC: UIViewController {
         changeLblTitle(string: selectedSegTitle)
         switch sender.selectedSegmentIndex {
         case 0:
-            getSegmentMovies(movieState: popularMovies, endPoint: EndPoint.popular)
+            getSegmentMovies(movieList: popularMovies, endPoint: EndPoint.popular)
         case 1:
-            getSegmentMovies(movieState: upcomingMovies, endPoint: EndPoint.upcoming)
+            getSegmentMovies(movieList: upcomingMovies, endPoint: EndPoint.upcoming)
         case 2:
-            getSegmentMovies(movieState: nowPlayingMovies, endPoint: EndPoint.nowPlaying)
+            getSegmentMovies(movieList: nowPlayingMovies, endPoint: EndPoint.nowPlaying)
         default:
             print("error")
         }
