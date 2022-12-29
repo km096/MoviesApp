@@ -137,8 +137,6 @@
 				F2ECCA4C295C88A40018BFCE /* Features */,
 				F2EDD5782951ED2C00EBFBDD /* Utils */,
 				F2E5D3822950BED100A1EB3A /* Model */,
-				F2E5D37D2950A83900A1EB3A /* Views */,
-				F2E5D37C2950A82C00A1EB3A /* Controller */,
 				F2E5D3682950A68600A1EB3A /* AppDelegate.swift */,
 				F2E5D36A2950A68600A1EB3A /* SceneDelegate.swift */,
 				F2E5D3712950A68900A1EB3A /* Assets.xcassets */,
@@ -147,20 +145,6 @@
 				F2DFA9B22956368700E0760E /* Localizable.strings */,
 			);
 			path = "Task 4";
-			sourceTree = "<group>";
-		};
-		F2E5D37C2950A82C00A1EB3A /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controller;
-			sourceTree = "<group>";
-		};
-		F2E5D37D2950A83900A1EB3A /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		F2E5D3822950BED100A1EB3A /* Model */ = {
@@ -177,7 +161,6 @@
 			children = (
 				F2ECCA57295C8A0D0018BFCE /* Common */,
 				F2ECCA4F295C89550018BFCE /* MainTabBar */,
-				F2ECCA62295C8C750018BFCE /* Views */,
 				F2ECCA50295C897B0018BFCE /* Movies */,
 				F2ECCA4E295C89410018BFCE /* People */,
 			);
@@ -197,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				F2ECCA56295C89E10018BFCE /* Controllers */,
+				F2ECCA62295C8C750018BFCE /* Views */,
 			);
 			path = MainTabBar;
 			sourceTree = "<group>";
