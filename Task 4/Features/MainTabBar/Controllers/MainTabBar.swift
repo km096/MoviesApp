@@ -17,13 +17,12 @@ class MainTabBar: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-            
     }
     
     func setupTabBar() {
-        tabBar.isTranslucent = true
+        tabBar.isTranslucent = false
         tabBar.barTintColor = .white
-        tabBar.tintColor = .tintColor
+        tabBar.tintColor = .systemGray
     }
     
     func setupVCs() {

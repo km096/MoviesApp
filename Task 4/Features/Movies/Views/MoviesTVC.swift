@@ -25,8 +25,9 @@ class MoviesTVC: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        gradientView.addGradient()
-        backView.backgroundColor = .clear
+//        gradientView.addGradient()
+//        backView.backgroundColor = .clear
+        gradientView.backgroundColor = .clear
         imgPoster.roundCorner(cornerRadius: 15)
     }
 

@@ -1,5 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-Task 4/Pods-Task 4-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/BulletinBoard/BLTNBoard.framework
 ${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework
-${BUILT_PRODUCTS_DIR}/MOLH/MOLH.framework
+${BUILT_PRODUCTS_DIR}/TTRangeSlider/TTRangeSlider.framework
 ${BUILT_PRODUCTS_DIR}/UICircularProgressRing/UICircularProgressRing.framework

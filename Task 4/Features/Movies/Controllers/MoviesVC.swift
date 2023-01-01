@@ -8,14 +8,15 @@
 import UIKit
 import Alamofire
 import Kingfisher
+import BLTNBoard
 
 class MoviesVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var lblMovieList: UILabel!
     @IBOutlet weak var txtSearchField: UITextField!
     @IBOutlet weak var segControl: UISegmentedControl!
     @IBOutlet weak var btnChangeLang: UIButton!
+    @IBOutlet weak var btnFilter: UIButton!
     
     var currentMovies = SegmentMovieList()
     var popularMovies = SegmentMovieList()
@@ -25,40 +26,25 @@ class MoviesVC: UIViewController {
     var filteredMovies = [Movies]()
     var isFiltered = false
     
-    var selectedSegTitle: String! {
-        return segControl.titleForSegment(at: segControl.selectedSegmentIndex)}
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         txtSearchField.delegate = self
-        
+
         fetchData(endPoint: EndPoint.popular)
-        changeLblTitle(string: "popular".localized)
+        
         segControl.addTitle(titles: ["popular".localized, "upcoming".localized, "nowPlaying".localized])
         btnChangeLang.setTitle("lang".localized, for: .normal)
         self.title = "movies".localized
+        tableView.layer.cornerRadius = 20
     }
     
     override func viewWillAppear(_ animated: Bool) {
         txtSearchField.text = ""
         isFiltered = false
         tableView.reloadData()
-    }
-    
-    func changeLblTitle(string: String){
-        lblMovieList.text = string
-    }
-    
-    func filterText(_ text: String) {
-        filteredMovies.removeAll()
-        for movie in currentMovies.movie {
-            if movie.title!.lowercased().starts(with: text.lowercased()) {
-                filteredMovies.append(movie)
-            }
-        }
-        isFiltered = true
     }
     
     func fetchData(endPoint: String){
@@ -107,8 +93,6 @@ class MoviesVC: UIViewController {
     @IBAction func btnChangeLanguage (_ sender: UIButton) {
         LocalizationManager.sharedInstance.switchLanguage(viewController: self)
     }
-
-    
     func getSegmentMovies (movieList: SegmentMovieList, endPoint: String) {
         self.currentMovies.movie = movieList.movie
         self.currentMovies.pageNumber = movieList.pageNumber
@@ -118,8 +102,7 @@ class MoviesVC: UIViewController {
         }
     }
     
-    @IBAction func segChanged(_ sender: UISegmentedControl) {
-        changeLblTitle(string: selectedSegTitle)
+    @IBAction func didChangeSegment(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             getSegmentMovies(movieList: popularMovies, endPoint: EndPoint.popular)
@@ -132,9 +115,42 @@ class MoviesVC: UIViewController {
         }
         tableView.reloadData()
     }
+    
+    @IBAction func didTapFilter(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "RangeSlider", bundle: nil)
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "RS") as? RangeSlider
+        else {return}
+        vc.delegate = self
+        if let sheet = vc.sheetPresentationController {
+            sheet.detents = [.medium()]
+        }
+        self.present(vc, animated: true)
+    }
+    
+    func filterText(_ text: String){
+        filteredMovies.removeAll()
+        let movie = currentMovies.movie.filter({
+            return $0.title!.lowercased().hasPrefix(text.lowercased()) })
+        filteredMovies.append(contentsOf: movie)
+        isFiltered = true
+    }
+    
 }
 
-extension MoviesVC: UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
+extension MoviesVC: UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, RateValueDelegate {
+    
+    func rateValueDidChange(minValue: Float, maxValue: Float) {
+        print("min: \(minValue), max: \(maxValue)")
+        let m = currentMovies.movie.filter({return Float($0.voteAverage!) >= minValue && Float($0.voteAverage!) <= maxValue})
+        filteredMovies.removeAll()
+        filteredMovies.append(contentsOf: m)
+        isFiltered = true
+        tableView.reloadData()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return isFiltered ? filteredMovies.count : currentMovies.movie.count
@@ -160,7 +176,6 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource, UITextFieldDeleg
                     imageUrl: URL(string: Api.baseImageUrl+(movies.posterPath ?? ""))
                 )
             }
-            
             return cell
         } else {
             return UITableViewCell()
