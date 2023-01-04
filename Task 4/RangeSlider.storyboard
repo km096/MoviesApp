@@ -88,7 +88,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter by rate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eo7-Kv-6S8">
-                                        <rect key="frame" x="20" y="266" width="353" height="60"/>
+                                        <rect key="frame" x="20" y="286" width="353" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="297-6a-9W6"/>
                                         </constraints>
@@ -98,7 +98,7 @@
                                     </label>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="3lN-tv-uwn" firstAttribute="top" secondItem="Eo7-Kv-6S8" secondAttribute="bottom" constant="50" id="1Pt-Hn-vei"/>
+                                    <constraint firstItem="3lN-tv-uwn" firstAttribute="top" secondItem="Eo7-Kv-6S8" secondAttribute="bottom" constant="30" id="1Pt-Hn-vei"/>
                                     <constraint firstItem="Eo7-Kv-6S8" firstAttribute="leading" secondItem="vKt-jA-4s5" secondAttribute="leading" constant="20" id="Dp5-Uj-a7k"/>
                                     <constraint firstAttribute="trailing" secondItem="Eo7-Kv-6S8" secondAttribute="trailing" constant="20" id="N0a-fQ-MQh"/>
                                     <constraint firstAttribute="trailing" secondItem="3lN-tv-uwn" secondAttribute="trailing" constant="40" id="Qj2-gX-jAM"/>
@@ -128,6 +128,11 @@
             <point key="canvasLocation" x="-8" y="4"/>
         </scene>
     </scenes>
+    <designables>
+        <designable name="3lN-tv-uwn">
+            <size key="intrinsicContentSize" width="-1" height="65"/>
+        </designable>
+    </designables>
     <resources>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

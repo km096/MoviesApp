@@ -17,6 +17,8 @@
 		F2A43BF7295B369C0077A2DA /* ArrowButoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A43BF6295B369C0077A2DA /* ArrowButoon.swift */; };
 		F2A43C0C295BB3C60077A2DA /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A43C0B295BB3C60077A2DA /* LocalizationManager.swift */; };
 		F2B0CE4C295749C1008F2965 /* MovieList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B0CE4B295749C1008F2965 /* MovieList.swift */; };
+		F2CB50FC296631B300A304F0 /* MoviesFilterExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CB50FB296631B300A304F0 /* MoviesFilterExt.swift */; };
+		F2CB50FE2966334B00A304F0 /* MoviesTableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CB50FD2966334B00A304F0 /* MoviesTableViewExt.swift */; };
 		F2DDC295295344AE0000AE06 /* MainTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DDC294295344AE0000AE06 /* MainTabBar.swift */; };
 		F2DDC297295348BD0000AE06 /* PeopleVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DDC296295348BD0000AE06 /* PeopleVC.swift */; };
 		F2DFA9AB2956069200E0760E /* UITabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DFA9AA2956069200E0760E /* UITabBarItem.swift */; };
@@ -51,6 +53,8 @@
 		F2A43BF6295B369C0077A2DA /* ArrowButoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowButoon.swift; sourceTree = "<group>"; };
 		F2A43C0B295BB3C60077A2DA /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
 		F2B0CE4B295749C1008F2965 /* MovieList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieList.swift; sourceTree = "<group>"; };
+		F2CB50FB296631B300A304F0 /* MoviesFilterExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesFilterExt.swift; sourceTree = "<group>"; };
+		F2CB50FD2966334B00A304F0 /* MoviesTableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewExt.swift; sourceTree = "<group>"; };
 		F2DDC294295344AE0000AE06 /* MainTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBar.swift; sourceTree = "<group>"; };
 		F2DDC296295348BD0000AE06 /* PeopleVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleVC.swift; sourceTree = "<group>"; };
 		F2DFA9AA2956069200E0760E /* UITabBarItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarItem.swift; sourceTree = "<group>"; };
@@ -104,6 +108,15 @@
 				CF6B63206BF0618DB525A2AC /* Pods_Task_4.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F2CB50FA2966315C00A304F0 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F2CB50FB296631B300A304F0 /* MoviesFilterExt.swift */,
+				F2CB50FD2966334B00A304F0 /* MoviesTableViewExt.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		F2DDC2A129539FEC0000AE06 /* Extension */ = {
@@ -204,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				F2E5D36C2950A68600A1EB3A /* MoviesVC.swift */,
+				F2CB50FA2966315C00A304F0 /* Extensions */,
 				F2EDD57D2952602E00EBFBDD /* DetailsVC.swift */,
 			);
 			path = Controllers;
@@ -394,8 +408,10 @@
 			files = (
 				F28F44522958654300FF1A04 /* PeopleCV.swift in Sources */,
 				F2B0CE4C295749C1008F2965 /* MovieList.swift in Sources */,
+				F2CB50FE2966334B00A304F0 /* MoviesTableViewExt.swift in Sources */,
 				F2E5D3842950BEE800A1EB3A /* MovieModel.swift in Sources */,
 				F2DDC297295348BD0000AE06 /* PeopleVC.swift in Sources */,
+				F2CB50FC296631B300A304F0 /* MoviesFilterExt.swift in Sources */,
 				F2E5D36D2950A68600A1EB3A /* MoviesVC.swift in Sources */,
 				F2E5D3692950A68600A1EB3A /* AppDelegate.swift in Sources */,
 				F2E5D3812950AD3F00A1EB3A /* UIView.swift in Sources */,

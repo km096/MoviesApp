@@ -9,6 +9,7 @@ import UIKit
 
 extension UISegmentedControl {
 
+    // MARK: - Set segmentedControl title
     func addTitle (titles: [String]) {
         for i in 0 ..< titles.count {
             self.setTitle(titles[i], forSegmentAt: i)

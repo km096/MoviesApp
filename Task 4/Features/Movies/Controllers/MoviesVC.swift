@@ -26,13 +26,15 @@ class MoviesVC: UIViewController {
     var filteredMovies = [Movies]()
     var isFiltered = false
     
-
+    var rate: (Float, Float) = (0, 10)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         txtSearchField.delegate = self
 
+        // Popular movies is first segment
         fetchData(endPoint: EndPoint.popular)
         
         segControl.addTitle(titles: ["popular".localized, "upcoming".localized, "nowPlaying".localized])
@@ -48,6 +50,7 @@ class MoviesVC: UIViewController {
     }
     
     func fetchData(endPoint: String){
+        
         let currentLang = Locale.current.language.languageCode!.identifier
         let otherParameters: [String: Any] = ["language": currentLang, "page": currentMovies.pageNumber+1]
 
@@ -56,6 +59,7 @@ class MoviesVC: UIViewController {
             case .success(let moviesResponse):
                 guard let movies = moviesResponse?.results else {return}
 
+                // increment page num and append fetched movies list to the propper segment movie list
                 if endPoint == EndPoint.popular {
                     self.popularMovies.pageNumber += 1
                     self.popularMovies.movie.append(contentsOf: movies)
@@ -66,18 +70,31 @@ class MoviesVC: UIViewController {
                     self.nowPlayingMovies.pageNumber += 1
                     self.nowPlayingMovies.movie.append(contentsOf: movies)
                 }
+                
+                // increment page num and append fetched movies list to the current selected segment movie list
                 self.currentMovies.movie.append(contentsOf: movies)
                 self.currentMovies.pageNumber += 1
+                
+                // reload table to appear the new fetched movies
                 self.tableView.reloadData()
+                
+                // apply search text on the new fetched movies
                 if !self.txtSearchField.text!.isEmpty {
-                    self.filterText(self.txtSearchField.text ?? "")
+                    self.filterByTitle(self.txtSearchField.text ?? "")
                 }
+                
+                // aply filter by rate on the new fetched movies if the user set a rate range not from 0 to 10
+                if(self.rate.0 != 0 || self.rate.1 != 10){
+                    self.filterByRate()
+                }
+
             case .failure(let error):
                 print("Error: \(error)")
             }
         }
     }
     
+    // MARK: - navigate to detailsVC
     @objc func goToDetails (sender: UIButton) {
         let indexpath = IndexPath(row: sender.tag, section: 0)
         guard let destinationVC = storyboard?.instantiateViewController(withIdentifier: "DetailsVC")
@@ -90,9 +107,10 @@ class MoviesVC: UIViewController {
         navigationController?.pushViewController(destinationVC, animated: true)
     }
     
-    @IBAction func btnChangeLanguage (_ sender: UIButton) {
+    @IBAction func btnChangeLanguageTapped (_ sender: UIButton) {
         LocalizationManager.sharedInstance.switchLanguage(viewController: self)
     }
+    
     func getSegmentMovies (movieList: SegmentMovieList, endPoint: String) {
         self.currentMovies.movie = movieList.movie
         self.currentMovies.pageNumber = movieList.pageNumber
@@ -102,6 +120,7 @@ class MoviesVC: UIViewController {
         }
     }
     
+    // MARK: - Change segment value
     @IBAction func didChangeSegment(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
@@ -116,92 +135,22 @@ class MoviesVC: UIViewController {
         tableView.reloadData()
     }
     
-    @IBAction func didTapFilter(_ sender: UIButton) {
+    @IBAction func btnFilterTapped(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "RangeSlider", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "RS") as? RangeSlider
         else {return}
         vc.delegate = self
         if let sheet = vc.sheetPresentationController {
-            sheet.detents = [.medium()]
+            sheet.detents = [.custom(resolver: { context in
+                return context.maximumDetentValue * 0.3
+            })]
         }
         self.present(vc, animated: true)
     }
     
-    func filterText(_ text: String){
-        filteredMovies.removeAll()
-        let movie = currentMovies.movie.filter({
-            return $0.title!.lowercased().hasPrefix(text.lowercased()) })
-        filteredMovies.append(contentsOf: movie)
-        isFiltered = true
-    }
-    
-}
-
-extension MoviesVC: UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, RateValueDelegate {
-    
-    func rateValueDidChange(minValue: Float, maxValue: Float) {
-        print("min: \(minValue), max: \(maxValue)")
-        let m = currentMovies.movie.filter({return Float($0.voteAverage!) >= minValue && Float($0.voteAverage!) <= maxValue})
-        filteredMovies.removeAll()
-        filteredMovies.append(contentsOf: m)
-        isFiltered = true
-        tableView.reloadData()
-    }
-    
+    // MARK: - To dismiss keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return isFiltered ? filteredMovies.count : currentMovies.movie.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "MoviesTVC", for: indexPath) as? MoviesTVC {
-            cell.btnGoToDetails.tag = indexPath.row
-            cell.btnGoToDetails.addTarget(self, action: #selector(goToDetails), for: .touchUpInside)
-            
-            if isFiltered {
-                let filtered = filteredMovies[indexPath.row]
-                cell.setupCell (
-                    title: filtered.title, releaseDate: filtered.releaseDate, overview: filtered.overview,
-                    rate: (filtered.voteAverage ?? 0) * 10, voteAverage: filtered.voteAverage,
-                    imageUrl: URL(string: Api.baseImageUrl+(filtered.posterPath ?? ""))
-                )
-            } else {
-                let movies = currentMovies.movie[indexPath.row]
-                cell.setupCell (
-                    title: movies.title, releaseDate: movies.releaseDate, overview: movies.overview,
-                    rate: (movies.voteAverage ?? 0) * 10, voteAverage: movies.voteAverage,
-                    imageUrl: URL(string: Api.baseImageUrl+(movies.posterPath ?? ""))
-                )
-            }
-            return cell
-        } else {
-            return UITableViewCell()
-        }
-    }
-    
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        if indexPath.row == currentMovies.movie.count - 3 {
-            fetchData(endPoint: EndPoint.popular)
-        }
-        
-        cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
-        UIView.animate(withDuration: 0.35) {
-            cell.layer.transform = CATransform3DMakeScale(1, 1, 1)
-        }
-    }
-    
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if let text = textField.text {
-            if string.count == 0 {
-                isFiltered = false
-            } else {
-                filterText(text+string)
-            }
-        }
-        tableView.reloadData()
-        return true
-    }
 }
+

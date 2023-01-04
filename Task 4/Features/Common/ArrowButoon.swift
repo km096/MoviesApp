@@ -8,6 +8,8 @@
 import UIKit
 
 class ArrowButoon: UIButton {
+    
+    // MARK: - change button image when change language
 
     override init(frame: CGRect) {
         super.init(frame: frame)

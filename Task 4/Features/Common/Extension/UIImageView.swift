@@ -8,12 +8,14 @@
 import UIKit
 
 extension UIImageView {
+    // MARK: - Add round corner
     func roundCorner(cornerRadius : CGFloat) {
         layer.cornerRadius = cornerRadius
         clipsToBounds = true
         contentMode = .scaleAspectFill
     }
     
+    // MARK: - Add shadow
     func addShadow(containerView: UIView, color : CGColor, shadowOpacity: Float, shadowRadius: Double, cornerRadius: CGFloat) {
         containerView.clipsToBounds = false
         containerView.layer.shadowColor = color
