@@ -127,7 +127,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system"/>
                                 <connections>
-                                    <action selector="btnBack:" destination="RlX-Pe-hgT" eventType="touchUpInside" id="072-yc-SBr"/>
+                                    <action selector="btnBackTapped:" destination="RlX-Pe-hgT" eventType="touchUpInside" id="8TP-VS-eRB"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfS-I3-T4K">

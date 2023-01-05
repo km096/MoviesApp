@@ -9,8 +9,7 @@ import UIKit
 
 class ArrowButoon: UIButton {
     
-    // MARK: - change button image when change language
-
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
     }
@@ -18,8 +17,11 @@ class ArrowButoon: UIButton {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
+    
     override func awakeFromNib() {
-        super.awakeFromNib()        
+        super.awakeFromNib()
+        
+        // Change button image when change language
             let currentLang = Locale.current.language.languageCode?.identifier
             if currentLang == "ar" {
                 self.setImage(UIImage(systemName: "chevron.left"), for: .normal)

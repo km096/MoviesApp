@@ -6,7 +6,6 @@
 //
 
 import Foundation
-//import UIKit
 
 // MARK: - Response
 struct Response: Decodable {

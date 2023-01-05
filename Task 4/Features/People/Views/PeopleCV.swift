@@ -18,7 +18,6 @@ class PeopleCV: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        containerView.isUserInteractionEnabled = true
     }
 
     

@@ -18,10 +18,10 @@ class MoviesVC: UIViewController {
     @IBOutlet weak var btnChangeLang: UIButton!
     @IBOutlet weak var btnFilter: UIButton!
     
-    var currentMovies = SegmentMovieList()
-    var popularMovies = SegmentMovieList()
-    var upcomingMovies = SegmentMovieList()
-    var nowPlayingMovies = SegmentMovieList()
+    var currentMovies = MovieList()
+    var popularMovies = MovieList()
+    var upcomingMovies = MovieList()
+    var nowPlayingMovies = MovieList()
     
     var filteredMovies = [Movies]()
     var isFiltered = false
@@ -30,6 +30,7 @@ class MoviesVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.delegate = self
         tableView.dataSource = self
         txtSearchField.delegate = self
@@ -39,6 +40,7 @@ class MoviesVC: UIViewController {
         
         segControl.addTitle(titles: ["popular".localized, "upcoming".localized, "nowPlaying".localized])
         btnChangeLang.setTitle("lang".localized, for: .normal)
+        
         self.title = "movies".localized
         tableView.layer.cornerRadius = 20
     }
@@ -52,14 +54,14 @@ class MoviesVC: UIViewController {
     func fetchData(endPoint: String){
         
         let currentLang = Locale.current.language.languageCode!.identifier
-        let otherParameters: [String: Any] = ["language": currentLang, "page": currentMovies.pageNumber+1]
+        let parameters: [String: Any] = ["language": currentLang, "page": currentMovies.pageNumber+1]
 
-        ApiManager.sharedInstance.fetchApiData(url: Api.baseUrl+endPoint, parameters: Api.parameters.merging(otherParameters, uniquingKeysWith: {(first, _) in first}), responseModel: Response.self) { response in
+        ApiManager.sharedInstance.fetchApiData(url: Api.baseUrl+endPoint, parameters: Api.baseParameters.merging(parameters, uniquingKeysWith: {(first, _) in first}), responseModel: Response.self) { response in
             switch response {
             case .success(let moviesResponse):
                 guard let movies = moviesResponse?.results else {return}
 
-                // increment page num and append fetched movies list to the propper segment movie list
+                // Increment page num and append fetched movies list to the propper segment movie list
                 if endPoint == EndPoint.popular {
                     self.popularMovies.pageNumber += 1
                     self.popularMovies.movie.append(contentsOf: movies)
@@ -71,19 +73,19 @@ class MoviesVC: UIViewController {
                     self.nowPlayingMovies.movie.append(contentsOf: movies)
                 }
                 
-                // increment page num and append fetched movies list to the current selected segment movie list
+                // Increment page num and append fetched movies list to the current selected segment movie list
                 self.currentMovies.movie.append(contentsOf: movies)
                 self.currentMovies.pageNumber += 1
                 
-                // reload table to appear the new fetched movies
+                // Reload table to appear the new fetched movies
                 self.tableView.reloadData()
                 
-                // apply search text on the new fetched movies
+                // Apply search text on the new fetched movies
                 if !self.txtSearchField.text!.isEmpty {
                     self.filterByTitle(self.txtSearchField.text ?? "")
                 }
                 
-                // aply filter by rate on the new fetched movies if the user set a rate range not from 0 to 10
+                // Aply filter by rate on the new fetched movies if the user set a rate range not from 0 to 10
                 if(self.rate.0 != 0 || self.rate.1 != 10){
                     self.filterByRate()
                 }
@@ -94,7 +96,7 @@ class MoviesVC: UIViewController {
         }
     }
     
-    // MARK: - navigate to detailsVC
+    // Navigate to detailsVC
     @objc func goToDetails (sender: UIButton) {
         let indexpath = IndexPath(row: sender.tag, section: 0)
         guard let destinationVC = storyboard?.instantiateViewController(withIdentifier: "DetailsVC")
@@ -111,7 +113,8 @@ class MoviesVC: UIViewController {
         LocalizationManager.sharedInstance.switchLanguage(viewController: self)
     }
     
-    func getSegmentMovies (movieList: SegmentMovieList, endPoint: String) {
+    // Load selected movie list
+    func getSegmentMovies (movieList: MovieList, endPoint: String) {
         self.currentMovies.movie = movieList.movie
         self.currentMovies.pageNumber = movieList.pageNumber
         
@@ -120,8 +123,7 @@ class MoviesVC: UIViewController {
         }
     }
     
-    // MARK: - Change segment value
-    @IBAction func didChangeSegment(_ sender: UISegmentedControl) {
+    @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
             getSegmentMovies(movieList: popularMovies, endPoint: EndPoint.popular)
@@ -135,6 +137,7 @@ class MoviesVC: UIViewController {
         tableView.reloadData()
     }
     
+    // Show bottom sheet with rate range slider
     @IBAction func btnFilterTapped(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "RangeSlider", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "RS") as? RangeSlider
@@ -148,7 +151,7 @@ class MoviesVC: UIViewController {
         self.present(vc, animated: true)
     }
     
-    // MARK: - To dismiss keyboard
+    // To dismiss keyboard
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         view.endEditing(true)
     }

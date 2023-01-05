@@ -69,9 +69,6 @@
                                                 <color key="value" systemColor="systemBlueColor"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="didChangeValue:" destination="Y6W-OH-hqX" eventType="valueChanged" id="wRx-KZ-gd7"/>
-                                        </connections>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSc-Ga-7iD">
                                         <rect key="frame" x="156.66666666666666" y="772" width="80" height="40"/>
@@ -84,7 +81,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Apply"/>
                                         <connections>
-                                            <action selector="btnApply:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="eDv-8i-lEk"/>
+                                            <action selector="btnApplyTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="FH1-wh-3IX"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter by rate" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Eo7-Kv-6S8">

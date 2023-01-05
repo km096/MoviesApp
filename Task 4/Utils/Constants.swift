@@ -10,13 +10,8 @@ import Alamofire
 struct Api {
     static let baseUrl = "https://api.themoviedb.org/3/"
     static let baseImageUrl = "https://image.tmdb.org/t/p/w300"
-    static let parameters: Parameters = ["api_key": "32c6fcb48eb9f8aba840a7e9dbe4188c"]    
+    static let baseParameters: Parameters = ["api_key": "32c6fcb48eb9f8aba840a7e9dbe4188c"]    
 
-}
-
-struct SegmentMovieList {
-    var pageNumber: Int = 0
-    var movie: [Movies] = [Movies]()
 }
 
 struct EndPoint {

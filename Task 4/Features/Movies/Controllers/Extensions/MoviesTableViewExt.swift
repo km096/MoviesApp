@@ -13,19 +13,16 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
         return isFiltered ? filteredMovies.count : currentMovies.movie.count
     }
     
-    // MARK: - Setup tableview cell
+    // Setup tableview cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "MoviesTVC", for: indexPath) as? MoviesTVC {
             cell.btnGoToDetails.tag = indexPath.row
             cell.btnGoToDetails.addTarget(self, action: #selector(goToDetails), for: .touchUpInside)
             
-            //if any filter applied load data from filteredMovies else load from currnetMovies
+            // If any filter applied load data from filteredMovies else load from currnetMovies
             let movieToDispaly = isFiltered ? filteredMovies[indexPath.row] : currentMovies.movie[indexPath.row]
         
-            cell.setupCell (
-                title: movieToDispaly.title, releaseDate: movieToDispaly.releaseDate, overview: movieToDispaly.overview,
-                rate: (movieToDispaly.voteAverage ?? 0) * 10, voteAverage: movieToDispaly.voteAverage,
-                imageUrl: URL(string: Api.baseImageUrl+(movieToDispaly.posterPath ?? ""))
+            cell.setupCell (title: movieToDispaly.title, releaseDate: movieToDispaly.releaseDate, overview: movieToDispaly.overview, rate: (movieToDispaly.voteAverage ?? 0) * 10, voteAverage: movieToDispaly.voteAverage, imageUrl: Api.baseImageUrl+(movieToDispaly.posterPath ?? "" )
             )
             
             return cell
@@ -35,12 +32,13 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        // MARK: - Add pagination
+        
+        // Add pagination
         if indexPath.row == currentMovies.movie.count - 3 {
             fetchData(endPoint: EndPoint.popular)
         }
         
-        // MARK: - Add animation to tableView
+        // Add animation to tableView
         cell.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
         UIView.animate(withDuration: 0.35) {
             cell.layer.transform = CATransform3DMakeScale(1, 1, 1)

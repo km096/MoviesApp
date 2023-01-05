@@ -24,13 +24,11 @@ class RangeSlider: UIViewController {
     }
     
 
-    @IBAction func btnApply(_ sender: UIButton) {
+    @IBAction func btnApplyTapped(_ sender: UIButton) {
         delegate?.rateValueDidChange(minValue: rangeSlider.selectedMinimum, maxValue: rangeSlider.selectedMaximum)
         dismiss(animated: true)
     }
    
 
-    @IBAction func didChangeValue(_ sender: TTRangeSlider) {
-        
-    }
+    
 }

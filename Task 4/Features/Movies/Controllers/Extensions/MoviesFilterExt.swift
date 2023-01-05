@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 extension MoviesVC: RateValueDelegate, UITextFieldDelegate {
 
     func rateValueDidChange(minValue: Float, maxValue: Float) {
@@ -23,7 +24,7 @@ extension MoviesVC: RateValueDelegate, UITextFieldDelegate {
         tableView.reloadData()
     }
     
-    // search tableView data through textField
+    // Search tableView data through textField
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if let text = textField.text {
             if string.count == 0 {

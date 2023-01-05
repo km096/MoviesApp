@@ -11,12 +11,9 @@ class MainTabBar: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setupTabBar()
         setupVCs()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
     
     func setupTabBar() {
@@ -24,6 +21,7 @@ class MainTabBar: UITabBarController {
         tabBar.barTintColor = .white
         tabBar.tintColor = .systemGray
     }
+    
     
     func setupVCs() {
         let vc1 = UIStoryboard(name: "Movies", bundle: nil) .instantiateViewController(withIdentifier: "MoviesNC") as! UINavigationController
