@@ -22,8 +22,7 @@ class ArrowButoon: UIButton {
         super.awakeFromNib()
         
         // Change button image when change language
-            let currentLang = Locale.current.language.languageCode?.identifier
-            if currentLang == "ar" {
+        if LocalizationManager.sharedInstance.getCurrentLang() == "ar" {
                 self.setImage(UIImage(systemName: "chevron.left"), for: .normal)
             }
         

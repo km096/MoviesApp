@@ -12,7 +12,7 @@ class LocalizationManager{
     static let sharedInstance = LocalizationManager()
     private init() {}
     
-    func getCurrentLang() -> String? {
+    func getCurrentLang() -> String {
         return Locale.current.language.languageCode!.identifier
     }
     
