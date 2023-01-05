@@ -1,13 +1,13 @@
 PODS:
   - Alamofire (5.6.4)
-  - BulletinBoard (5.0.0)
+  - Cosmos (23.0.0)
   - Kingfisher (7.4.1)
   - TTRangeSlider (1.0.7)
   - UICircularProgressRing (8.0.0)
 
 DEPENDENCIES:
   - Alamofire
-  - BulletinBoard
+  - Cosmos
   - Kingfisher
   - TTRangeSlider
   - UICircularProgressRing
@@ -15,18 +15,18 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - Alamofire
-    - BulletinBoard
+    - Cosmos
     - Kingfisher
     - TTRangeSlider
     - UICircularProgressRing
 
 SPEC CHECKSUMS:
   Alamofire: 4e95d97098eacb88856099c4fc79b526a299e48c
-  BulletinBoard: dba77053c2a7b64953f63073f7534165af2edd21
+  Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   Kingfisher: cd762a593a61b2fbecf7645c00f9a801a3ebfc9c
   TTRangeSlider: 8cf72eca457c3b700c92eb0074be908c986e25ec
   UICircularProgressRing: 19927375b2b21b5fa5fd9582f15ccdef9659da16
 
-PODFILE CHECKSUM: 5eccf18eb07fbb99b4a0c771bb6ed3c6d1f3c24e
+PODFILE CHECKSUM: 3baf3561af53d3dbdb2cfe4dc46210a29032b820
 
 COCOAPODS: 1.11.3

@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "Filter by rate"; ObjectID = "Eo7-Kv-6S8"; */
+"Eo7-Kv-6S8.text" = "تصفية بالتقييم";
+
+/* Class = "UIButton"; configuration.title = "Apply"; ObjectID = "MSc-Ga-7iD"; */
+"MSc-Ga-7iD.configuration.title" = "تطبيق";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "MSc-Ga-7iD"; */
+//"MSc-Ga-7iD.normalTitle" = "Button";
