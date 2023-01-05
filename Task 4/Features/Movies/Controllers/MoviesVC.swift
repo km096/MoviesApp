@@ -8,7 +8,6 @@
 import UIKit
 import Alamofire
 import Kingfisher
-import BLTNBoard
 
 class MoviesVC: UIViewController {
 
@@ -39,20 +38,11 @@ class MoviesVC: UIViewController {
         fetchData(endPoint: EndPoint.popular)
         
         segControl.addTitle(titles: ["popular".localized, "upcoming".localized, "nowPlaying".localized])
-        btnChangeLang.setTitle("lang".localized, for: .normal)
         
-        self.title = "movies".localized
         tableView.layer.cornerRadius = 20
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        txtSearchField.text = ""
-        isFiltered = false
-        tableView.reloadData()
-    }
-    
-    func fetchData(endPoint: String){
-        
+    func fetchData(endPoint: String) {
         let currentLang = Locale.current.language.languageCode!.identifier
         let parameters: [String: Any] = ["language": currentLang, "page": currentMovies.pageNumber+1]
 
@@ -76,8 +66,6 @@ class MoviesVC: UIViewController {
                 // Increment page num and append fetched movies list to the current selected segment movie list
                 self.currentMovies.movie.append(contentsOf: movies)
                 self.currentMovies.pageNumber += 1
-                
-                // Reload table to appear the new fetched movies
                 self.tableView.reloadData()
                 
                 // Apply search text on the new fetched movies
@@ -85,36 +73,23 @@ class MoviesVC: UIViewController {
                     self.filterByTitle(self.txtSearchField.text ?? "")
                 }
                 
-                // Aply filter by rate on the new fetched movies if the user set a rate range not from 0 to 10
+                // Apply filter by rate on the new fetched movies if the user set a rate range not from 0 to 10
                 if(self.rate.0 != 0 || self.rate.1 != 10){
                     self.filterByRate()
                 }
-
             case .failure(let error):
                 print("Error: \(error)")
             }
         }
     }
     
-    // Navigate to detailsVC
-    @objc func goToDetails (sender: UIButton) {
-        let indexpath = IndexPath(row: sender.tag, section: 0)
-        guard let destinationVC = storyboard?.instantiateViewController(withIdentifier: "DetailsVC")
-                as? DetailsVC else {return}
-        if isFiltered {
-            destinationVC.movie = filteredMovies[indexpath.row]
-        } else {
-            destinationVC.movie = currentMovies.movie[indexpath.row]
-        }
-        navigationController?.pushViewController(destinationVC, animated: true)
-    }
-    
-    @IBAction func btnChangeLanguageTapped (_ sender: UIButton) {
-        LocalizationManager.sharedInstance.switchLanguage(viewController: self)
+    // Dismiss keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
     
     // Load selected movie list
-    func getSegmentMovies (movieList: MovieList, endPoint: String) {
+    func segmentMovieList (movieList: MovieList, endPoint: String) {
         self.currentMovies.movie = movieList.movie
         self.currentMovies.pageNumber = movieList.pageNumber
         
@@ -123,14 +98,27 @@ class MoviesVC: UIViewController {
         }
     }
     
+    // Navigate to detailsVC
+    @objc func goToDetails (sender: UIButton) {
+        let indexpath = IndexPath(row: sender.tag, section: 0)
+        guard let destinationVC = storyboard?.instantiateViewController(withIdentifier: "DetailsVC")
+                as? DetailsVC else {return}
+        destinationVC.movie = isFiltered ? filteredMovies[indexpath.row] : currentMovies.movie[indexpath.row]
+        present(destinationVC, animated: false)
+    }
+    
+    @IBAction func btnChangeLanguageTapped (_ sender: UIButton) {
+        LocalizationManager.sharedInstance.switchLanguage(viewController: self)
+    }
+        
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            getSegmentMovies(movieList: popularMovies, endPoint: EndPoint.popular)
+            segmentMovieList(movieList: popularMovies, endPoint: EndPoint.popular)
         case 1:
-            getSegmentMovies(movieList: upcomingMovies, endPoint: EndPoint.upcoming)
+            segmentMovieList(movieList: upcomingMovies, endPoint: EndPoint.upcoming)
         case 2:
-            getSegmentMovies(movieList: nowPlayingMovies, endPoint: EndPoint.nowPlaying)
+            segmentMovieList(movieList: nowPlayingMovies, endPoint: EndPoint.nowPlaying)
         default:
             print("error")
         }
@@ -140,20 +128,15 @@ class MoviesVC: UIViewController {
     // Show bottom sheet with rate range slider
     @IBAction func btnFilterTapped(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "RangeSlider", bundle: nil)
-        guard let vc = storyboard.instantiateViewController(withIdentifier: "RS") as? RangeSlider
-        else {return}
+        guard let vc = storyboard.instantiateViewController(withIdentifier: "RangeSlider")
+                as? RangeSlider else {return}
         vc.delegate = self
         if let sheet = vc.sheetPresentationController {
             sheet.detents = [.custom(resolver: { context in
-                return context.maximumDetentValue * 0.3
-            })]
+                return context.maximumDetentValue * 0.3 })]
         }
         self.present(vc, animated: true)
     }
     
-    // To dismiss keyboard
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        view.endEditing(true)
-    }
 }
 

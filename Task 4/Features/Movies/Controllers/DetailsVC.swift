@@ -27,11 +27,8 @@ class DetailsVC: UIViewController {
         backView.alpha = 0.5
         
         setupMovieDetails()
-        self.title = "movies".localized
-        imgPoster.addShadow (
-            containerView: containerView, color: UIColor.black.cgColor,
-            shadowOpacity: 0.7, shadowRadius: 10, cornerRadius: 10
-        )        
+        imgPoster.addShadow (containerView: containerView, color: UIColor.black.cgColor,
+                             shadowOpacity: 0.7, shadowRadius: 10, cornerRadius: 10)
     }
     
     func setupMovieDetails() {
@@ -40,9 +37,9 @@ class DetailsVC: UIViewController {
         lblTitle.text = movie?.title
         lblOverview.text = movie?.overview
         imgPoster.kf.setImage(with: imageUrl, options: [.cacheOriginalImage])
-        
-        
     }
-
     
+    @IBAction func btnBackTapped(_ sender: Any) {
+        dismiss(animated: false)
+    }
 }

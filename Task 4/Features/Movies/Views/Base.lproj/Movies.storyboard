@@ -230,14 +230,14 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="3XM-yN-i3g">
-                        <barButtonItem key="backBarButtonItem" title=" " id="c9Y-7c-QHd"/>
+                        <barButtonItem key="backBarButtonItem" title="  " id="c9Y-7c-QHd"/>
                         <barButtonItem key="rightBarButtonItem" style="plain" id="Q9f-fh-Y9i">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="DzM-T8-eTn">
                                 <rect key="frame" x="290" y="4.6666666666666679" width="87" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="btn"/>
+                                <buttonConfiguration key="configuration" style="plain" title="ع"/>
                                 <connections>
                                     <action selector="btnChangeLanguageTapped:" destination="A2T-ob-zgR" eventType="touchUpInside" id="IJj-Kg-vFM"/>
                                 </connections>
@@ -256,19 +256,19 @@
             </objects>
             <point key="canvasLocation" x="1543" y="4"/>
         </scene>
-        <!--DetailsVC-->
+        <!--Movies-->
         <scene sceneID="JC2-4k-TId">
             <objects>
-                <viewController storyboardIdentifier="DetailsVC" id="kGF-sJ-hAK" customClass="DetailsVC" customModule="Task_4" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailsVC" modalTransitionStyle="flipHorizontal" modalPresentationStyle="fullScreen" id="kGF-sJ-hAK" customClass="DetailsVC" customModule="Task_4" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yzn-bd-eaP">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WXy-Ta-pHN">
-                                <rect key="frame" x="30" y="218" width="333" height="600"/>
+                                <rect key="frame" x="30" y="168" width="333" height="650"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3EM-2Y-90G">
-                                        <rect key="frame" x="0.0" y="0.0" width="333" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="333" height="650"/>
                                     </imageView>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -277,7 +277,6 @@
                                     <constraint firstItem="3EM-2Y-90G" firstAttribute="leading" secondItem="WXy-Ta-pHN" secondAttribute="leading" id="CwH-3l-0qV"/>
                                     <constraint firstAttribute="bottom" secondItem="3EM-2Y-90G" secondAttribute="bottom" id="FjJ-Bf-L02"/>
                                     <constraint firstAttribute="trailing" secondItem="3EM-2Y-90G" secondAttribute="trailing" id="SZQ-Hb-r1d"/>
-                                    <constraint firstAttribute="height" constant="600" id="qAO-dl-NJL"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vqD-mj-f5f">
@@ -305,6 +304,10 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star" translatesAutoresizingMaskIntoConstraints="NO" id="aEm-6a-DpH">
+                                        <rect key="frame" x="20" y="187" width="96" height="75"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="270" id="0mH-Gi-R8J"/>
@@ -316,6 +319,19 @@
                                     <constraint firstItem="cbz-ZM-g9Z" firstAttribute="leading" secondItem="lbV-kH-EEf" secondAttribute="leading" constant="20" id="hjT-xe-Mbv"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BDf-Ni-FKW" customClass="ArrowButoon" customModule="Task_4" customModuleProvider="target">
+                                <rect key="frame" x="16" y="59" width="40" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="FhX-hU-ofM"/>
+                                    <constraint firstAttribute="width" constant="40" id="W3x-4J-Ng6"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="chevron.left" catalog="system"/>
+                                <connections>
+                                    <action selector="btnBackTapped:" destination="kGF-sJ-hAK" eventType="touchUpInside" id="aLr-jy-0yM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="mg0-BG-Ci1"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -326,12 +342,16 @@
                             <constraint firstItem="lbV-kH-EEf" firstAttribute="bottom" secondItem="vqD-mj-f5f" secondAttribute="bottom" id="PQZ-4J-Xfo"/>
                             <constraint firstItem="WXy-Ta-pHN" firstAttribute="bottom" secondItem="mg0-BG-Ci1" secondAttribute="bottom" id="b0o-dh-F3T"/>
                             <constraint firstItem="lbV-kH-EEf" firstAttribute="top" secondItem="vqD-mj-f5f" secondAttribute="top" id="ehF-E2-hPL"/>
+                            <constraint firstItem="BDf-Ni-FKW" firstAttribute="top" secondItem="mg0-BG-Ci1" secondAttribute="top" id="ib2-tN-Lse"/>
                             <constraint firstItem="WXy-Ta-pHN" firstAttribute="leading" secondItem="mg0-BG-Ci1" secondAttribute="leading" constant="30" id="kcv-6t-CEK"/>
                             <constraint firstItem="lbV-kH-EEf" firstAttribute="trailing" secondItem="vqD-mj-f5f" secondAttribute="trailing" id="lLi-Po-Cht"/>
                             <constraint firstItem="mg0-BG-Ci1" firstAttribute="trailing" secondItem="WXy-Ta-pHN" secondAttribute="trailing" constant="30" id="n0z-nX-DqG"/>
                             <constraint firstItem="lbV-kH-EEf" firstAttribute="leading" secondItem="vqD-mj-f5f" secondAttribute="leading" id="nLb-DJ-6do"/>
+                            <constraint firstItem="WXy-Ta-pHN" firstAttribute="height" secondItem="yzn-bd-eaP" secondAttribute="height" multiplier="0.762911" id="tJL-Sd-fNy"/>
+                            <constraint firstItem="BDf-Ni-FKW" firstAttribute="left" secondItem="mg0-BG-Ci1" secondAttribute="left" constant="16" id="wtr-VM-dtO"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Movies" id="5fy-xf-nPA"/>
                     <connections>
                         <outlet property="backView" destination="vqD-mj-f5f" id="Q0a-sG-t4g"/>
                         <outlet property="containerView" destination="WXy-Ta-pHN" id="9Q9-U6-bZq"/>
@@ -343,7 +363,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v7U-Sf-ba1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2303" y="4"/>
+            <point key="canvasLocation" x="2301.5267175572517" y="3.5211267605633805"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="DWu-h0-1g6">
@@ -366,9 +386,11 @@
         </scene>
     </scenes>
     <resources>
+        <image name="chevron.left" catalog="system" width="97" height="128"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="filter" width="24" height="24"/>
         <image name="magnifyingglass" catalog="system" width="128" height="117"/>
+        <image name="star" width="128" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
