@@ -6,11 +6,17 @@
 //
 
 import UIKit
+import MOLH
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate, MOLHResetable {
 
     var window: UIWindow?
 
+    func reset() {
+        let stry = UIStoryboard(name: "Main", bundle: nil)
+        window?.rootViewController = stry.instantiateInitialViewController()
+    }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.

@@ -27,9 +27,7 @@ class PeopleVC: UIViewController {
     
     func fetchData(endPoint: String) {
         
-        let currentLang = Locale.current.language.languageCode!.identifier
-
-        let page: [String: Any] = ["language": currentLang, "page": pageNumber+1]
+        let page: [String: Any] = ["language": LocalizationManager.sharedInstance.getCurrentLang(), "page": pageNumber+1]
         ApiManager.sharedInstance.fetchApiData(url: Api.baseUrl+EndPoint.person, parameters: Api.baseParameters.merging(page, uniquingKeysWith: { (first, _) in first }),
             responseModel: People.self) { response in
 

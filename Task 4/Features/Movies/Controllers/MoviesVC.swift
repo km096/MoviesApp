@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import Kingfisher
+import MOLH
 
 class MoviesVC: UIViewController {
 
@@ -43,8 +44,7 @@ class MoviesVC: UIViewController {
     }
     
     func fetchData(endPoint: String) {
-        let currentLang = Locale.current.language.languageCode!.identifier
-        let parameters: [String: Any] = ["language": currentLang, "page": currentMovies.pageNumber+1]
+        let parameters: [String: Any] = ["language": LocalizationManager.sharedInstance.getCurrentLang(), "page": currentMovies.pageNumber+1]
 
         ApiManager.sharedInstance.fetchApiData(url: Api.baseUrl+endPoint, parameters: Api.baseParameters.merging(parameters, uniquingKeysWith: {(first, _) in first}), responseModel: Response.self) { response in
             switch response {
@@ -108,6 +108,7 @@ class MoviesVC: UIViewController {
     }
     
     @IBAction func btnChangeLanguageTapped (_ sender: UIButton) {
+       
         LocalizationManager.sharedInstance.switchLanguage(viewController: self)
     }
         

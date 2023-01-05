@@ -6,26 +6,21 @@
 //
 
 import UIKit
+import MOLH
 
 class LocalizationManager{
     
     static let sharedInstance = LocalizationManager()
     private init() {}
     
-    func getCurrentLang() -> String? {
-        return Locale.current.language.languageCode!.identifier
+    func getCurrentLang() -> String {
+        return MOLHLanguage.currentAppleLanguage()
     }
     
     
     func switchLanguage(viewController : UIViewController){
-        let newlanguage = getCurrentLang() == "en" ? "ar" : "en"
-        let alert = UIAlertController(title: "changeLanguage".localized, message: "changeLangMsg".localized, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "ok".localized, style: .default, handler: { action in
-            UserDefaults.standard.set([newlanguage], forKey: "AppleLanguages")
-            exit(0)
-        }))
-        alert.addAction(UIAlertAction(title: "cancel".localized, style: .cancel, handler: nil))
-        viewController.present(alert, animated: true)
+        MOLH.setLanguageTo(getCurrentLang() == "en" ? "ar" : "en")
+        MOLH.reset()
     }
     
 }

@@ -12,4 +12,6 @@ pod 'Kingfisher'
 pod 'UICircularProgressRing'
 pod "TTRangeSlider"
 pod 'Cosmos'
+pod 'MOLH'
+
 end
