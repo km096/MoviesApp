@@ -10,6 +10,7 @@ target 'Task 4' do
 pod 'Alamofire'
 pod 'Kingfisher'
 pod 'UICircularProgressRing'
-pod 'MOLH'
+pod "TTRangeSlider"
+pod 'BulletinBoard'
 
 end

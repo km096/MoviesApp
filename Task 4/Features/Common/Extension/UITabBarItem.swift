@@ -9,6 +9,7 @@ import UIKit
 
 extension UITabBarItem {
     
+    // Set tabBar image and title 
     func customizeTabBar(title: String!, image: UIImage!, selectedImage: UIImage!) {
         self.title = title
         self.image = image

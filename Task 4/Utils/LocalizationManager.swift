@@ -5,9 +5,7 @@
 //  Created by ME-MAC on 12/28/22.
 //
 
-import Foundation
 import UIKit
-
 
 class LocalizationManager{
     

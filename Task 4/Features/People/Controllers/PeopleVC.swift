@@ -17,6 +17,7 @@ class PeopleVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         collectionView.delegate = self
         collectionView.dataSource = self
 
@@ -29,11 +30,10 @@ class PeopleVC: UIViewController {
         let currentLang = Locale.current.language.languageCode!.identifier
 
         let page: [String: Any] = ["language": currentLang, "page": pageNumber+1]
-        ApiManager.sharedInstance.fetchApiData(url: Api.baseUrl+EndPoint.person, parameters: Api.parameters.merging(page, uniquingKeysWith: { (first, _) in first }),
+        ApiManager.sharedInstance.fetchApiData(url: Api.baseUrl+EndPoint.person, parameters: Api.baseParameters.merging(page, uniquingKeysWith: { (first, _) in first }),
             responseModel: People.self) { response in
 
             switch response {
-
             case .success(let personResponse):
                 guard let personResponse = personResponse?.results else {return}
 
@@ -46,6 +46,7 @@ class PeopleVC: UIViewController {
         }
     }
     
+    //Go to selected actor detail page
     @objc func tapHandle(_ sender: UITapGestureRecognizer) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: "ActorVC")
                         as? ActorVC else {return}
@@ -57,49 +58,3 @@ class PeopleVC: UIViewController {
 
 }
 
-extension PeopleVC: UICollectionViewDelegate, UICollectionViewDataSource,
-                    UICollectionViewDelegateFlowLayout {
-    
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return person.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PeopleCV", for: indexPath) as? PeopleCV {
-            let person = person[indexPath.row]
-            cell.lblName.text = person.name
-            cell.imgPersonPhoto.kf.setImage(with: URL(string: Api.baseImageUrl+(person.profilePath ?? "")), options: [.cacheOriginalImage] )
-            cell.imgPersonPhoto.addShadow(containerView: cell.contentView, color: UIColor.black.cgColor, shadowOpacity: 0.7, shadowRadius: 10, cornerRadius: 10)
-            
-            let tap = UITapGestureRecognizer(target: self, action: #selector(tapHandle))
-            cell.containerView.addGestureRecognizer(tap)
-            cell.containerView.tag = indexPath.row
-            
-            return cell
-        }else {
-            return UICollectionViewCell()
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-
-        if indexPath.row == person.count - 3 {
-            fetchData(endPoint: EndPoint.person)
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        let layout = collectionViewLayout as! UICollectionViewFlowLayout
-        
-        let itemSpacing: CGFloat = 15
-        let itemInOneLine: CGFloat = 2
-        
-        let width = collectionView.frame.width - itemSpacing * (itemInOneLine - 1 )
-        
-        layout.minimumLineSpacing = itemSpacing
-        
-        return CGSize(width: width / itemInOneLine, height: (width / itemInOneLine) * 1.5)
-    }
-}
