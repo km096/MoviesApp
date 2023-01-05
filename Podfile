@@ -11,6 +11,5 @@ pod 'Alamofire'
 pod 'Kingfisher'
 pod 'UICircularProgressRing'
 pod "TTRangeSlider"
-pod 'BulletinBoard'
-
+pod 'Cosmos'
 end

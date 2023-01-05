@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import Cosmos
 
 class DetailsVC: UIViewController {
     
@@ -16,6 +17,7 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var frontView: UIView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblOverview: UILabel!
+    @IBOutlet weak var ratingStars: CosmosView!
     
     var movie: Movies?
     
@@ -24,11 +26,12 @@ class DetailsVC: UIViewController {
 
         frontView.backgroundColor = .clear
         backView.layer.cornerRadius = 5
-        backView.alpha = 0.5
+        backView.alpha = 0.8
         
         setupMovieDetails()
+        setupRatingStars()
         imgPoster.addShadow (containerView: containerView, color: UIColor.black.cgColor,
-                             shadowOpacity: 0.7, shadowRadius: 10, cornerRadius: 10)
+                             shadowOpacity: 0.7, shadowRadius: 15, cornerRadius: 13)
     }
     
     func setupMovieDetails() {
@@ -39,7 +42,24 @@ class DetailsVC: UIViewController {
         imgPoster.kf.setImage(with: imageUrl, options: [.cacheOriginalImage])
     }
     
+    @IBAction func btnShareTapped(_ sender: UIButton) {
+        let textToShare = [lblTitle.text, lblOverview.text]
+        let imageToShare = [imgPoster.image]
+        
+        let activityViewController = UIActivityViewController(activityItems: [textToShare, imageToShare], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true)
+    }
+    
     @IBAction func btnBackTapped(_ sender: Any) {
         dismiss(animated: false)
     }
+    
+    func setupRatingStars(){
+        ratingStars.rating = (movie?.voteAverage ?? 0) / 2
+        ratingStars.settings.fillMode = .precise
+    }
+    
+    
+    
 }

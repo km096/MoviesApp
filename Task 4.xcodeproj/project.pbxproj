@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		5B149258C831DB17AAA806B6 /* Pods_Task_4.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF6B63206BF0618DB525A2AC /* Pods_Task_4.framework */; };
 		F217E76B2961F3EB00E1FE45 /* RangeSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F217E7692961F3EB00E1FE45 /* RangeSlider.swift */; };
-		F217E76E2961F67A00E1FE45 /* RangeSlider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F217E76D2961F67A00E1FE45 /* RangeSlider.storyboard */; };
 		F28F44522958654300FF1A04 /* PeopleCV.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28F44512958654300FF1A04 /* PeopleCV.swift */; };
 		F28F4454295881B800FF1A04 /* PeopleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28F4453295881B800FF1A04 /* PeopleModel.swift */; };
 		F28F445629589C7900FF1A04 /* ActorVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28F445529589C7900FF1A04 /* ActorVC.swift */; };
@@ -18,6 +17,7 @@
 		F2904ED72967041D00527175 /* ActorCollectionViewEXT.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2904ED62967041D00527175 /* ActorCollectionViewEXT.swift */; };
 		F2904EDA2967111900527175 /* SegmentState.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2904ED92967111900527175 /* SegmentState.swift */; };
 		F2904EDB296718C700527175 /* Movies.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2904EDD296718C700527175 /* Movies.storyboard */; };
+		F2904EE12967671300527175 /* RangeSlider.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F2904EE32967671300527175 /* RangeSlider.storyboard */; };
 		F2A43BF7295B369C0077A2DA /* ArrowButoon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A43BF6295B369C0077A2DA /* ArrowButoon.swift */; };
 		F2A43C0C295BB3C60077A2DA /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A43C0B295BB3C60077A2DA /* LocalizationManager.swift */; };
 		F2B0CE4C295749C1008F2965 /* UISegmentedControlExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B0CE4B295749C1008F2965 /* UISegmentedControlExt.swift */; };
@@ -47,7 +47,6 @@
 		9AD674866926624DF5EA72FD /* Pods-Task 4.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Task 4.release.xcconfig"; path = "Target Support Files/Pods-Task 4/Pods-Task 4.release.xcconfig"; sourceTree = "<group>"; };
 		CF6B63206BF0618DB525A2AC /* Pods_Task_4.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Task_4.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F217E7692961F3EB00E1FE45 /* RangeSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSlider.swift; sourceTree = "<group>"; };
-		F217E76D2961F67A00E1FE45 /* RangeSlider.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = RangeSlider.storyboard; sourceTree = "<group>"; };
 		F28F44512958654300FF1A04 /* PeopleCV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleCV.swift; sourceTree = "<group>"; };
 		F28F4453295881B800FF1A04 /* PeopleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeopleModel.swift; sourceTree = "<group>"; };
 		F28F445529589C7900FF1A04 /* ActorVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActorVC.swift; sourceTree = "<group>"; };
@@ -57,6 +56,8 @@
 		F2904ED92967111900527175 /* SegmentState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentState.swift; sourceTree = "<group>"; };
 		F2904EDE296718CD00527175 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Movies.storyboard; sourceTree = "<group>"; };
 		F2904EE0296718E300527175 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/Movies.strings; sourceTree = "<group>"; };
+		F2904EE42967671700527175 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/RangeSlider.storyboard; sourceTree = "<group>"; };
+		F2904EE62967672200527175 /* ar */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ar; path = ar.lproj/RangeSlider.strings; sourceTree = "<group>"; };
 		F2A43BF6295B369C0077A2DA /* ArrowButoon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrowButoon.swift; sourceTree = "<group>"; };
 		F2A43C0B295BB3C60077A2DA /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
 		F2B0CE4B295749C1008F2965 /* UISegmentedControlExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISegmentedControlExt.swift; sourceTree = "<group>"; };
@@ -241,7 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				F2E5D37E2950AC9D00A1EB3A /* MoviesTVC.swift */,
-				F217E76D2961F67A00E1FE45 /* RangeSlider.storyboard */,
+				F2904EE32967671300527175 /* RangeSlider.storyboard */,
 				F2904EDD296718C700527175 /* Movies.storyboard */,
 			);
 			path = Views;
@@ -364,7 +365,7 @@
 			files = (
 				F2E5D3752950A68900A1EB3A /* LaunchScreen.storyboard in Resources */,
 				F2DFA9B02956368700E0760E /* Localizable.strings in Resources */,
-				F217E76E2961F67A00E1FE45 /* RangeSlider.storyboard in Resources */,
+				F2904EE12967671300527175 /* RangeSlider.storyboard in Resources */,
 				F2E5D3722950A68900A1EB3A /* Assets.xcassets in Resources */,
 				F2ECCA5C295C8B210018BFCE /* People.storyboard in Resources */,
 				F2ECCA64295C8C940018BFCE /* Main.storyboard in Resources */,
@@ -459,6 +460,15 @@
 				F2904EE0296718E300527175 /* ar */,
 			);
 			name = Movies.storyboard;
+			sourceTree = "<group>";
+		};
+		F2904EE32967671300527175 /* RangeSlider.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2904EE42967671700527175 /* Base */,
+				F2904EE62967672200527175 /* ar */,
+			);
+			name = RangeSlider.storyboard;
 			sourceTree = "<group>";
 		};
 		F2DFA9B22956368700E0760E /* Localizable.strings */ = {
