@@ -17,11 +17,9 @@ extension MoviesVC: RateValueDelegate, UITextFieldDelegate {
         
     // Filter by movie rate
     func filterByRate() {
-        let movie = currentMovies.movie.filter({Float($0.voteAverage!) >= rate.0 && Float($0.voteAverage!) <= rate.1})
-        filteredMovies.removeAll()
-        filteredMovies.append(contentsOf: movie)
-        isFiltered = true
-        tableView.reloadData()
+        filter { movie in
+            Float(movie.voteAverage ?? 0) >= rate.0 && Float(movie.voteAverage ?? 0) <= rate.1 
+        }
     }
     
     // Search tableView data through textField
@@ -33,16 +31,23 @@ extension MoviesVC: RateValueDelegate, UITextFieldDelegate {
                 filterByTitle(text+string)
             }
         }
-        tableView.reloadData()
         return true
     }
     
     // Filter by movie title
     func filterByTitle(_ text: String){
+        filter { movie in
+            movie.title?.lowercased().hasPrefix(text.lowercased()) ?? false
+        }
+    }
+    
+    //
+    func filter(closure: (Movies) -> Bool) {
+        let movie = currentMovies.movie.filter(closure)
         filteredMovies.removeAll()
-        let movie = currentMovies.movie.filter({
-            $0.title!.lowercased().hasPrefix(text.lowercased()) })
         filteredMovies.append(contentsOf: movie)
         isFiltered = true
+        tableView.reloadData()
     }
+    
 }
