@@ -41,7 +41,7 @@ extension MoviesVC: RateValueDelegate, UITextFieldDelegate {
         }
     }
     
-    //
+    // Append the filtered to filteredMovies and reload tableView
     func filter(closure: (Movies) -> Bool) {
         let movie = currentMovies.movie.filter(closure)
         filteredMovies.removeAll()

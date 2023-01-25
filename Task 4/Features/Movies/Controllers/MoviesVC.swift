@@ -94,6 +94,8 @@ class MoviesVC: UIViewController {
         
         if movieList.pageNumber == 0 {
             fetchData(endPoint: endPoint)
+        }else {
+            tableView.reloadData()
         }
     }
     
@@ -121,7 +123,6 @@ class MoviesVC: UIViewController {
         default:
             print("error")
         }
-        tableView.reloadData()
     }
     
     // Show bottom sheet with rate range slider
