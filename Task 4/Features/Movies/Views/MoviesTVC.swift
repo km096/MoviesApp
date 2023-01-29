@@ -31,16 +31,14 @@ class MoviesTVC: UITableViewCell {
 
     }
     
-    func setupCell(title: String?, releaseDate: String?, overview: String?, rate: Double?,
-                   voteAverage: Double?, imageUrl: String?) {
-        
-        lblTitle.text = title ?? ""
-        lblReleaseDate.text = releaseDate ?? ""
-        lblOverview.text = overview ?? ""
-        movieRate.value = rate ?? 0
-        lblVoteAverage.text = String(describing: (voteAverage ?? 0))
-        imgPoster.kf.setImage(with: URL(string: imageUrl ?? ""), options: [.cacheOriginalImage])
-        
+    func updateView(movie: Movies) {
+        lblTitle.text = movie.title
+        lblReleaseDate.text = movie.releaseDate
+        lblOverview.text = movie.overview
+        movieRate.value = (movie.voteAverage ?? 0) * 10
+        lblVoteAverage.text = String(describing: movie.voteAverage ?? 0)
+        imgPoster.kf.setImage(with: URL(string: Api.baseImageUrl+(movie.posterPath ?? "")),
+            options: [.cacheOriginalImage])
     }
 
     

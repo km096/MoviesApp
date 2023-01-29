@@ -22,8 +22,7 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
             // If any filter applied load data from filteredMovies else load from currnetMovies
             let movieToDispaly = isFiltered ? filteredMovies[indexPath.row] : currentMovies.movie[indexPath.row]
         
-            cell.setupCell (title: movieToDispaly.title, releaseDate: movieToDispaly.releaseDate, overview: movieToDispaly.overview, rate: (movieToDispaly.voteAverage ?? 0) * 10, voteAverage: movieToDispaly.voteAverage, imageUrl: Api.baseImageUrl+(movieToDispaly.posterPath ?? "" )
-            )
+            cell.updateView(movie: movieToDispaly)
             
             return cell
         } else {

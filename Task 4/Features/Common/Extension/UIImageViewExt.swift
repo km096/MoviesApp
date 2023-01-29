@@ -30,9 +30,6 @@ extension UIImageView {
         
         layer.cornerRadius = cornerRadius
         contentMode = .scaleAspectFill
-        
-        
-        
     }
 }
 
