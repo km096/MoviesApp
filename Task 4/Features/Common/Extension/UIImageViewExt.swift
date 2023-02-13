@@ -23,7 +23,7 @@ extension UIImageView {
         containerView.layer.masksToBounds = false
         containerView.layer.shadowColor = color
         containerView.layer.shadowOpacity = shadowOpacity
-        containerView.layer.shadowOffset = CGSize(width: 20, height: 0)
+        containerView.layer.shadowOffset = .zero
         containerView.layer.shadowRadius = shadowRadius
         containerView.backgroundColor = .clear
         containerView.layer.shadowPath = UIBezierPath(rect: containerView.bounds).cgPath

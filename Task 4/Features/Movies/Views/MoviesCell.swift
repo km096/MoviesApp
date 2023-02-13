@@ -9,9 +9,8 @@ import UIKit
 import Kingfisher
 import UICircularProgressRing
 
-class MoviesTVC: UITableViewCell {
+class MoviesCell: UITableViewCell {
 
-    @IBOutlet weak var backView: UIView!
     @IBOutlet weak var imgPoster: UIImageView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblReleaseDate: UILabel!

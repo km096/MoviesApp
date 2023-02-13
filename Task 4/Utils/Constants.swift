@@ -22,3 +22,9 @@ struct EndPoint {
     static let person = "person/popular"
 
 }
+
+enum AppStoryboard: String {
+    case movies = "Movies"
+    case people = "People"
+    case favorite = "Favorite"
+}

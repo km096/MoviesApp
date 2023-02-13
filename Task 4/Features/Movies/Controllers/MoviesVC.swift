@@ -14,7 +14,7 @@ class MoviesVC: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var txtSearchField: UITextField!
-    @IBOutlet weak var segControl: UISegmentedControl!
+    @IBOutlet weak var moviesSegmentedControl: UISegmentedControl!
     @IBOutlet weak var btnChangeLang: UIButton!
     @IBOutlet weak var btnFilter: UIButton!
     
@@ -33,14 +33,15 @@ class MoviesVC: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.layer.cornerRadius = 20
+        tableView.registerNib(cell: MoviesCell.self)
+        
         txtSearchField.delegate = self
 
         // Popular movies is first segment
         fetchData(endPoint: EndPoint.popular)
         
-        segControl.addTitle(titles: ["popular".localized, "upcoming".localized, "nowPlaying".localized])
-        
-        tableView.layer.cornerRadius = 20
+        moviesSegmentedControl.addTitle(titles: ["popular".localized, "upcoming".localized, "nowPlaying".localized])
     }
     
     func fetchData(endPoint: String) {

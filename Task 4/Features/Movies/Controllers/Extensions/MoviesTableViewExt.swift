@@ -15,25 +15,21 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
     
     // Setup tableview cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "MoviesTVC", for: indexPath) as? MoviesTVC {
-            cell.btnGoToDetails.tag = indexPath.row
-            cell.btnGoToDetails.addTarget(self, action: #selector(goToDetails), for: .touchUpInside)
-            
-            // If any filter applied load data from filteredMovies else load from currnetMovies
-            let movieToDispaly = isFiltered ? filteredMovies[indexPath.row] : currentMovies.movie[indexPath.row]
+        let cell = tableView.dequeue() as MoviesCell
+        cell.btnGoToDetails.tag = indexPath.row
+        cell.btnGoToDetails.addTarget(self, action: #selector(goToDetails), for: .touchUpInside)
         
-            cell.updateView(movie: movieToDispaly)
-            
-            return cell
-        } else {
-            return UITableViewCell()
-        }
+        // If any filter applied load data from filteredMovies else load from currnetMovies
+        let movieToDispaly = isFiltered ? filteredMovies[indexPath.row] : currentMovies.movie[indexPath.row]
+    
+        cell.updateView(movie: movieToDispaly)
+        return cell
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         // Add pagination
-        switch segControl.selectedSegmentIndex {
+        switch moviesSegmentedControl.selectedSegmentIndex {
         case 0 :
             if indexPath.row == currentMovies.movie.count - 3 {
                 fetchData(endPoint: EndPoint.popular)

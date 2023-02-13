@@ -24,13 +24,17 @@ class MainTabBar: UITabBarController {
     
     
     func setupVCs() {
-        let vc1 = UIStoryboard(name: "Movies", bundle: nil) .instantiateViewController(withIdentifier: "MoviesNC") as! UINavigationController
+
+        let vc1 = self.instaniateVC(appStoryboard: .movies, vc: MoviesVC.self)
         vc1.tabBarItem.customizeTabBar(title: "movies".localized, image: UIImage(systemName: "film"), selectedImage: UIImage(systemName: "film.fill"))
         
-        let vc2 = UIStoryboard(name: "People", bundle: nil) .instantiateViewController(withIdentifier: "PeopleNC") as! UINavigationController
+        let vc2 = self.instaniateVC(appStoryboard: .people, vc: PeopleVC.self)
         vc2.tabBarItem.customizeTabBar(title: "people".localized, image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
         
         self.setViewControllers([vc1, vc2], animated: false)
     }
 
 }
+
+
+
