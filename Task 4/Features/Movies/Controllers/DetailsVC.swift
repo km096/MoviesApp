@@ -14,17 +14,18 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var imgPoster: UIImageView!
     @IBOutlet weak var backView: UIView!
-    @IBOutlet weak var frontView: UIView!
+//    @IBOutlet weak var frontView: UIView!
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblOverview: UILabel!
     @IBOutlet weak var ratingStars: CosmosView!
+    @IBOutlet weak var addToFavoriteBtn: UIButton!
     
     var movie: Movies?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        frontView.backgroundColor = .clear
+//        frontView.backgroundColor = .clear
         backView.layer.cornerRadius = 5
         backView.alpha = 0.8
         
@@ -42,7 +43,7 @@ class DetailsVC: UIViewController {
         imgPoster.kf.setImage(with: imageUrl, options: [.cacheOriginalImage])
     }
     
-    @IBAction func btnShareTapped(_ sender: UIButton) {
+    @IBAction func shareBtnTapped(_ sender: UIButton) {
         let textToShare = [lblTitle.text, lblOverview.text]
         let imageToShare = [imgPoster.image]
         
@@ -51,10 +52,12 @@ class DetailsVC: UIViewController {
         self.present(activityViewController, animated: true)
     }
     
-    @IBAction func btnBackTapped(_ sender: Any) {
-        dismiss(animated: false)
+    @IBAction func backBtnTapped(_ sender: Any) {
+        dismissVC()
     }
     
+    @IBAction func addToFavoriteBtnTapped(_ sender: Any) {
+    }
     func setupRatingStars(){
         ratingStars.rating = (movie?.voteAverage ?? 0) / 2
         ratingStars.settings.fillMode = .precise

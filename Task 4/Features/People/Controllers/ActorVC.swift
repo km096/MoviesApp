@@ -25,14 +25,14 @@ class ActorVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
 
-        setupInfo()
+        setupActorInfo()
         collectionView.layer.cornerRadius = 15
         imgActor.addShadow(containerView: containerView, color: UIColor.black.cgColor,
             shadowOpacity: 0.5, shadowRadius: 5, cornerRadius: 15)
         
     }
     
-    func setupInfo () {
+    func setupActorInfo () {
         lblName.text = actor?.name
         lblGender.text = "\(actor?.gender ?? 0)".localized
         lblKnownFor.text = actor?.knownForDepartment
@@ -40,8 +40,8 @@ class ActorVC: UIViewController {
             options: [.cacheOriginalImage] )
     }
 
-    @IBAction func btnBackTapped(_ sender: Any) {
-        self.dismiss(animated: true)
+    @IBAction func backBtnTapped(_ sender: Any) {
+        dismissVC()
     }
     
 

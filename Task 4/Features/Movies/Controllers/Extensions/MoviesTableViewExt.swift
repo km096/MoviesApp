@@ -15,9 +15,9 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
     
     // Setup tableview cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeue() as MoviesCell
-        cell.btnGoToDetails.tag = indexPath.row
-        cell.btnGoToDetails.addTarget(self, action: #selector(goToDetails), for: .touchUpInside)
+        let cell = tableView.dequeueCell() as MoviesCell
+        cell.goToDetailsBtn.tag = indexPath.row
+        cell.goToDetailsBtn.addTarget(self, action: #selector(goToDetails), for: .touchUpInside)
         
         // If any filter applied load data from filteredMovies else load from currnetMovies
         let movieToDispaly = isFiltered ? filteredMovies[indexPath.row] : currentMovies.movie[indexPath.row]

@@ -25,13 +25,16 @@ class MainTabBar: UITabBarController {
     
     func setupVCs() {
 
-        let vc1 = self.instaniateVC(appStoryboard: .movies, vc: MoviesVC.self)
-        vc1.tabBarItem.customizeTabBar(title: "movies".localized, image: UIImage(systemName: "film"), selectedImage: UIImage(systemName: "film.fill"))
+        let moviesVC = self.instantiateVC(appStoryboard: .movies, vc: MoviesVC.self)
+        moviesVC.tabBarItem.customizeTabBar(title: "movies".localized, image: UIImage(systemName: "film"), selectedImage: UIImage(systemName: "film.fill"))
         
-        let vc2 = self.instaniateVC(appStoryboard: .people, vc: PeopleVC.self)
-        vc2.tabBarItem.customizeTabBar(title: "people".localized, image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
+        let peopleVC = self.instantiateVC(appStoryboard: .people, vc: PeopleVC.self)
+        peopleVC.tabBarItem.customizeTabBar(title: "people".localized, image: UIImage(systemName: "person"), selectedImage: UIImage(systemName: "person.fill"))
         
-        self.setViewControllers([vc1, vc2], animated: false)
+        let favoriteVC = self.instantiateVC(appStoryboard: .favorite, vc: FavoriteMoviesVC.self)
+        favoriteVC.tabBarItem.customizeTabBar(title: "favorite".localized, image: UIImage(systemName: "heart"), selectedImage: UIImage(systemName: "heart.fill"))
+        
+        self.setViewControllers([moviesVC, peopleVC, favoriteVC], animated: false)
     }
 
 }

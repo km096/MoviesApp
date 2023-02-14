@@ -17,6 +17,10 @@ class LocalizationManager{
         return MOLHLanguage.currentAppleLanguage()
     }
     
+    func curretlangIsEn() -> Bool {
+        return getCurrentLang() == "en" ? true : false
+    }
+    
     
     func switchLanguage(viewController : UIViewController){
         MOLH.setLanguageTo(getCurrentLang() == "en" ? "ar" : "en")

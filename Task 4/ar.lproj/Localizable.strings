@@ -10,6 +10,7 @@
 "lang" = "en";
 "movies" = "أفلام";
 "people" = "أشخاص";
+"favorite" = "المفضلة";
 "popular" = "شائعة";
 "upcoming" = "قادمة";
 "nowPlaying" = "تعرض حالياً";

@@ -46,11 +46,11 @@ class PeopleVC: UIViewController {
     
     //Go to selected actor detail page
     @objc func tapHandle(_ sender: UITapGestureRecognizer) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "ActorVC")
-                        as? ActorVC else {return}
-        let index = IndexPath(row: sender.view!.tag, section: 0)
-        vc.actor = person[index.row]
-        present(vc, animated: true)
+        guard let actorVC = storyboard?.instantiateViewController(withIdentifier: "ActorVC") as? ActorVC
+        else {return}
+        let indexPath = IndexPath(row: sender.view!.tag, section: 0)
+        actorVC.actor = person[indexPath.row]
+        presestVC(actorVC)
     }
     
 

@@ -17,7 +17,7 @@ class MoviesCell: UITableViewCell {
     @IBOutlet weak var lblOverview: UILabel!
     @IBOutlet weak var lblVoteAverage: UILabel!
     @IBOutlet weak var movieRate: UICircularProgressRing!
-    @IBOutlet weak var btnGoToDetails: UIButton!
+    @IBOutlet weak var goToDetailsBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,11 +25,6 @@ class MoviesCell: UITableViewCell {
         imgPoster.roundCorner(cornerRadius: 15)
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
-    
     func updateView(movie: Movies) {
         lblTitle.text = movie.title
         lblReleaseDate.text = movie.releaseDate

@@ -11,6 +11,7 @@
 "lang" = "ع";
 "movies" = "Movies";
 "people" = "People";
+"favorite" = "Favorite";
 "popular" = "Popular";
 "upcoming" = "Upcoming";
 "nowPlaying" = "NowPlaying";

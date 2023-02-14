@@ -15,8 +15,7 @@ class MoviesVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var txtSearchField: UITextField!
     @IBOutlet weak var moviesSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var btnChangeLang: UIButton!
-    @IBOutlet weak var btnFilter: UIButton!
+    @IBOutlet weak var filterBtn: UIButton!
     
     var currentMovies = MovieList()
     var popularMovies = MovieList()
@@ -33,6 +32,7 @@ class MoviesVC: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.isHidden = false
         tableView.layer.cornerRadius = 20
         tableView.registerNib(cell: MoviesCell.self)
         
@@ -104,14 +104,14 @@ class MoviesVC: UIViewController {
     // Navigate to detailsVC
     @objc func goToDetails (sender: UIButton) {
         let indexpath = IndexPath(row: sender.tag, section: 0)
-        guard let destinationVC = storyboard?.instantiateViewController(withIdentifier: "DetailsVC")
+        guard let detailsVC = storyboard?.instantiateViewController(withIdentifier: "DetailsVC")
                 as? DetailsVC else {return}
-        destinationVC.movie = isFiltered ? filteredMovies[indexpath.row] : currentMovies.movie[indexpath.row]
-        present(destinationVC, animated: false)
+        detailsVC.movie = isFiltered ? filteredMovies[indexpath.row] : currentMovies.movie[indexpath.row]
+        print("btn tapped")
+        presestVC(detailsVC)
     }
     
-    @IBAction func btnChangeLanguageTapped (_ sender: UIButton) {
-       
+    @IBAction func changeLangBtnTapped (_ sender: UIButton) {
         LocalizationManager.sharedInstance.switchLanguage(viewController: self)
     }
         
@@ -129,7 +129,7 @@ class MoviesVC: UIViewController {
     }
     
     // Show bottom sheet with rate range slider
-    @IBAction func btnFilterTapped(_ sender: UIButton) {
+    @IBAction func filterBtnTapped(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "RangeSlider", bundle: nil)
         guard let vc = storyboard.instantiateViewController(withIdentifier: "RangeSlider")
                 as? RangeSlider else {return}
