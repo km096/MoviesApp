@@ -197,7 +197,7 @@
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XzE-Et-LOH">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="618"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Grw-Gn-H1U">
+                                    <view clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Grw-Gn-H1U">
                                         <rect key="frame" x="-3" y="329" width="359" height="279"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yOb-J2-QzC" customClass="CosmosView" customModule="Cosmos">
@@ -243,12 +243,12 @@
                                                 <rect key="frame" x="20" y="55" width="319" height="224"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uGU-l7-ghB">
-                                                        <rect key="frame" x="0.0" y="0.0" width="319" height="300"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="319" height="250"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jR4-Qz-8v4">
-                                                                <rect key="frame" x="0.0" y="0.0" width="319" height="300"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jR4-Qz-8v4">
+                                                                <rect key="frame" x="0.0" y="0.0" width="319" height="250"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="300" id="qOl-Ey-iuT"/>
+                                                                    <constraint firstAttribute="height" constant="250" id="qOl-Ey-iuT"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="Avenir-Heavy" family="Avenir" pointSize="17"/>
                                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -308,7 +308,6 @@
                             <constraint firstItem="Uek-TR-cx0" firstAttribute="height" secondItem="oYf-Ux-ffC" secondAttribute="height" multiplier="0.140845" id="9bI-mp-oXS"/>
                             <constraint firstItem="NdV-Bc-DnQ" firstAttribute="leading" secondItem="q9Z-dX-O0Q" secondAttribute="leading" constant="20" id="AsV-Bf-De7"/>
                             <constraint firstItem="q9Z-dX-O0Q" firstAttribute="trailing" secondItem="Nop-ll-Tl0" secondAttribute="trailing" constant="20" id="Bg4-cc-HIH"/>
-                            <constraint firstItem="yOb-J2-QzC" firstAttribute="height" secondItem="oYf-Ux-ffC" secondAttribute="height" multiplier="0.0410798" id="HgZ-q8-phf"/>
                             <constraint firstItem="Nop-ll-Tl0" firstAttribute="height" secondItem="oYf-Ux-ffC" secondAttribute="height" multiplier="0.0586854" id="NN3-Z6-yyl"/>
                             <constraint firstItem="yOb-J2-QzC" firstAttribute="width" secondItem="oYf-Ux-ffC" secondAttribute="width" multiplier="0.508906" id="SKq-pW-iVE"/>
                             <constraint firstItem="q9Z-dX-O0Q" firstAttribute="trailing" secondItem="NdV-Bc-DnQ" secondAttribute="trailing" constant="20" id="dCG-TI-yn3"/>

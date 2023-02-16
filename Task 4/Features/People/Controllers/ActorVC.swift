@@ -27,8 +27,7 @@ class ActorVC: UIViewController {
 
         setupActorInfo()
         collectionView.layer.cornerRadius = 15
-        imgActor.addShadow(containerView: containerView, color: UIColor.black.cgColor,
-            shadowOpacity: 0.5, shadowRadius: 5, cornerRadius: 15)
+        imgActor.addShadow(view: containerView, shadowOpacity: 0.5, shadowRadius: 5, cornerRadius: 15)
         
     }
     

@@ -10,15 +10,6 @@ import MOLH
 
 class ArrowButoon: UIButton {
     
-    
-//    override init(frame: CGRect) {
-//        super.init(frame: frame)
-//    }
-//    
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//    }
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         
@@ -26,9 +17,5 @@ class ArrowButoon: UIButton {
         if LocalizationManager.sharedInstance.getCurrentLang() == "ar" {
                 self.setImage(UIImage(systemName: "chevron.left"), for: .normal)
             }
-        
-
     }
-
-
 }

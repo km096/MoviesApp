@@ -26,6 +26,7 @@
 		F2A6FDF7299C2DB100281043 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A6FDF5299C2DB100281043 /* FavoriteCell.swift */; };
 		F2A6FDF8299C2DB100281043 /* FavoriteCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A6FDF6299C2DB100281043 /* FavoriteCell.xib */; };
 		F2A6FDFA299C2F5C00281043 /* FavoriteExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2A6FDF9299C2F5C00281043 /* FavoriteExt.swift */; };
+		F2A6FDFB299C3A9B00281043 /* MoviesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2A6FDFD299C3A9B00281043 /* MoviesCell.xib */; };
 		F2B0CE4C295749C1008F2965 /* UISegmentedControlExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B0CE4B295749C1008F2965 /* UISegmentedControlExt.swift */; };
 		F2CB50FC296631B300A304F0 /* MoviesFilterExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CB50FB296631B300A304F0 /* MoviesFilterExt.swift */; };
 		F2CB50FE2966334B00A304F0 /* MoviesTableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2CB50FD2966334B00A304F0 /* MoviesTableViewExt.swift */; };
@@ -49,7 +50,6 @@
 		F2FC1796299AB01B00D97DDB /* FavoriteMovies.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F2FC1794299AB01B00D97DDB /* FavoriteMovies.xcdatamodeld */; };
 		F2FC1798299AB29F00D97DDB /* UITabBarControllerExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FC1797299AB29F00D97DDB /* UITabBarControllerExt.swift */; };
 		F2FC17A3299ADA8100D97DDB /* UITableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2FC17A2299ADA8100D97DDB /* UITableViewExt.swift */; };
-		F2FC17A7299ADE1100D97DDB /* MoviesCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F2FC17A5299ADE1100D97DDB /* MoviesCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -76,6 +76,7 @@
 		F2A6FDF5299C2DB100281043 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		F2A6FDF6299C2DB100281043 /* FavoriteCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteCell.xib; sourceTree = "<group>"; };
 		F2A6FDF9299C2F5C00281043 /* FavoriteExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteExt.swift; sourceTree = "<group>"; };
+		F2A6FDFC299C3A9B00281043 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MoviesCell.xib; sourceTree = "<group>"; };
 		F2B0CE4B295749C1008F2965 /* UISegmentedControlExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISegmentedControlExt.swift; sourceTree = "<group>"; };
 		F2CB50FB296631B300A304F0 /* MoviesFilterExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesFilterExt.swift; sourceTree = "<group>"; };
 		F2CB50FD2966334B00A304F0 /* MoviesTableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesTableViewExt.swift; sourceTree = "<group>"; };
@@ -104,7 +105,6 @@
 		F2FC1795299AB01B00D97DDB /* FavoriteMovies.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FavoriteMovies.xcdatamodel; sourceTree = "<group>"; };
 		F2FC1797299AB29F00D97DDB /* UITabBarControllerExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITabBarControllerExt.swift; sourceTree = "<group>"; };
 		F2FC17A2299ADA8100D97DDB /* UITableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewExt.swift; sourceTree = "<group>"; };
-		F2FC17A5299ADE1100D97DDB /* MoviesCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MoviesCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -306,7 +306,7 @@
 				F2E5D37E2950AC9D00A1EB3A /* MoviesCell.swift */,
 				F2904EE32967671300527175 /* RangeSlider.storyboard */,
 				F2904EDD296718C700527175 /* Movies.storyboard */,
-				F2FC17A5299ADE1100D97DDB /* MoviesCell.xib */,
+				F2A6FDFD299C3A9B00281043 /* MoviesCell.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -447,7 +447,7 @@
 				F2E5D3722950A68900A1EB3A /* Assets.xcassets in Resources */,
 				F2ECCA5C295C8B210018BFCE /* People.storyboard in Resources */,
 				F2A6FDF3299C289D00281043 /* Favorite.storyboard in Resources */,
-				F2FC17A7299ADE1100D97DDB /* MoviesCell.xib in Resources */,
+				F2A6FDFB299C3A9B00281043 /* MoviesCell.xib in Resources */,
 				F2ECCA64295C8C940018BFCE /* Main.storyboard in Resources */,
 				F2904EDB296718C700527175 /* Movies.storyboard in Resources */,
 				F2A6FDF8299C2DB100281043 /* FavoriteCell.xib in Resources */,
@@ -557,6 +557,14 @@
 				F2904EE62967672200527175 /* ar */,
 			);
 			name = RangeSlider.storyboard;
+			sourceTree = "<group>";
+		};
+		F2A6FDFD299C3A9B00281043 /* MoviesCell.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F2A6FDFC299C3A9B00281043 /* Base */,
+			);
+			name = MoviesCell.xib;
 			sourceTree = "<group>";
 		};
 		F2DFA9B22956368700E0760E /* Localizable.strings */ = {

@@ -23,7 +23,7 @@ extension PeopleVC: UICollectionViewDelegate, UICollectionViewDataSource,
             let person = person[indexPath.row]
             cell.lblName.text = person.name
             cell.imgPersonPhoto.kf.setImage(with: URL(string: Api.baseImageUrl+(person.profilePath ?? "")), options: [.cacheOriginalImage] )
-            cell.imgPersonPhoto.addShadow(containerView: cell.contentView, color: UIColor.black.cgColor, shadowOpacity: 0.7, shadowRadius: 10, cornerRadius: 10)
+            cell.imgPersonPhoto.addShadow(view: cell.contentView, shadowOpacity: 0.7, shadowRadius: 10, cornerRadius: 10)
             
             // To recognize which cell is tapped
             let tap = UITapGestureRecognizer(target: self, action: #selector(tapHandle))

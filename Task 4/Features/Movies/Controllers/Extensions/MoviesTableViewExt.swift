@@ -15,15 +15,18 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
     
     // Setup tableview cell
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueCell() as MoviesCell
-        cell.goToDetailsBtn.tag = indexPath.row
-        cell.goToDetailsBtn.addTarget(self, action: #selector(goToDetails), for: .touchUpInside)
-        
-        // If any filter applied load data from filteredMovies else load from currnetMovies
+        let cell = tableView.dequeueCell() as MoviesCell        
         let movieToDispaly = isFiltered ? filteredMovies[indexPath.row] : currentMovies.movie[indexPath.row]
     
         cell.updateView(movie: movieToDispaly)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let detailsVC = storyboard?.instantiateViewController(withIdentifier: "DetailsVC")
+                as? DetailsVC else {return}
+        detailsVC.movie = isFiltered ? filteredMovies[indexPath.row] : currentMovies.movie[indexPath.row]
+        presestVC(detailsVC)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

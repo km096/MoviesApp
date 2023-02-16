@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UITabBarController {
+extension UIViewController {
     
     func instantiateVC<T: UIViewController>(appStoryboard: AppStoryboard, vc: T.Type) -> T {
         let storyboard = UIStoryboard(name: appStoryboard.rawValue, bundle: nil)

@@ -9,6 +9,9 @@ import UIKit
 import Alamofire
 import Kingfisher
 import MOLH
+import CoreData
+
+let appDelegate = UIApplication.shared.delegate as? AppDelegate
 
 class MoviesVC: UIViewController {
 
@@ -101,17 +104,7 @@ class MoviesVC: UIViewController {
         }
     }
     
-    // Navigate to detailsVC
-    @objc func goToDetails (sender: UIButton) {
-        let indexpath = IndexPath(row: sender.tag, section: 0)
-        guard let detailsVC = storyboard?.instantiateViewController(withIdentifier: "DetailsVC")
-                as? DetailsVC else {return}
-        detailsVC.movie = isFiltered ? filteredMovies[indexpath.row] : currentMovies.movie[indexpath.row]
-        print("btn tapped")
-        presestVC(detailsVC)
-    }
-    
-    @IBAction func changeLangBtnTapped (_ sender: UIButton) {
+    @IBAction func changeLangBtnTapped (_ sender: Any) {
         LocalizationManager.sharedInstance.switchLanguage(viewController: self)
     }
         

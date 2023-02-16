@@ -17,7 +17,6 @@ class MoviesCell: UITableViewCell {
     @IBOutlet weak var lblOverview: UILabel!
     @IBOutlet weak var lblVoteAverage: UILabel!
     @IBOutlet weak var movieRate: UICircularProgressRing!
-    @IBOutlet weak var goToDetailsBtn: UIButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -34,6 +33,14 @@ class MoviesCell: UITableViewCell {
         imgPoster.kf.setImage(with: URL(string: Api.baseImageUrl+(movie.posterPath ?? "")),
             options: [.cacheOriginalImage])
     }
-
-    
+//    
+//    func updateView(movie: Movie) {
+//        lblTitle.text = movie.movieTitle
+//        lblReleaseDate.text = movie.movieReleaseDate
+//        lblOverview.text = movie.movieOverview
+//        movieRate.value = (movie.movieVoteAverage) * 10
+//        lblVoteAverage.text = String(describing: movie.movieVoteAverage)
+//        imgPoster.kf.setImage(with: URL(string: Api.baseImageUrl+(movie.moviePosterPath ?? "")),
+//            options: [.cacheOriginalImage])
+//    }
 }
