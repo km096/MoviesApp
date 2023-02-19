@@ -16,14 +16,16 @@ extension FavoriteMoviesVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell() as MoviesCell
-        let favMovie = favoriteMovie[indexPath.row]
-        cell.lblTitle.text = favMovie.movieTitle
-        cell.lblOverview.text = favMovie.movieOverview
-        cell.lblReleaseDate.text = favMovie.movieReleaseDate
-        cell.movieRate.value = favMovie.movieVoteAverage * 10
-        cell.lblVoteAverage.text = String(describing: favMovie.movieVoteAverage)
-        cell.imgPoster.kf.setImage(with: URL(string: Api.baseImageUrl + (favMovie.moviePosterPath ?? "")), options: [.cacheOriginalImage])
+        cell.configureCell(movie: initMovie(atIndexPath: indexPath))
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Movies", bundle: nil)
+        guard let detailsVC = storyboard.instantiateViewController(withIdentifier: "DetailsVC")
+                as? DetailsVC else {return}
+        detailsVC.movie = initMovie(atIndexPath: indexPath)
+        presestVC(detailsVC)
     }
     
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -31,14 +33,12 @@ extension FavoriteMoviesVC: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .none
+        return .delete
     }
     
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-        let deleteAction = UITableViewRowAction(style: .destructive, title: "REMOVE") { rowAction, indexPath in
-            self.removeMove(atIndexPath: indexPath)
-//            self.favoriteTableView.reloadRows(at: [indexPath], with: .automatic)
-            self.favoriteTableView.reloadData()
+        let deleteAction = UITableViewRowAction(style: .destructive, title: "REMOVE") { _, indexPath in
+            self.removeMovie(atIndexPath: indexPath)
         }
         deleteAction.backgroundColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 1)
         return [deleteAction]

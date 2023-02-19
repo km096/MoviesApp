@@ -18,7 +18,7 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueCell() as MoviesCell        
         let movieToDispaly = isFiltered ? filteredMovies[indexPath.row] : currentMovies.movie[indexPath.row]
     
-        cell.updateView(movie: movieToDispaly)
+        cell.configureCell(movie: movieToDispaly)
         return cell
     }
     

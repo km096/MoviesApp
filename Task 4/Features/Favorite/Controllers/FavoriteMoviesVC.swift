@@ -13,7 +13,7 @@ class FavoriteMoviesVC: UIViewController {
     @IBOutlet weak var favoriteTableView: UITableView!
     
     var favoriteMovie: [FavoriteMovie] = []
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,13 +21,12 @@ class FavoriteMoviesVC: UIViewController {
         favoriteTableView.dataSource = self
         favoriteTableView.isHidden = false
         favoriteTableView.registerNib(cell: MoviesCell.self)
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
         fetchCoreDataObjects()
     }
-    
+
     func fetchCoreDataObjects() {
         self.fetchData { complete in
             if complete {
@@ -38,7 +37,6 @@ class FavoriteMoviesVC: UIViewController {
                 }
             }
         }
-        
     }
     
     func fetchData(completion: (_ complete: Bool)-> ()) {
@@ -58,19 +56,27 @@ class FavoriteMoviesVC: UIViewController {
         favoriteTableView.reloadData()
     }
     
-    func removeMove(atIndexPath indexPath: IndexPath) {
+    func removeMovie(atIndexPath indexPath: IndexPath) {
         guard let mangedContext = appDelegate?.persistentContainer.viewContext else { return }
         mangedContext.delete(favoriteMovie[indexPath.row])
         
         do {
             try mangedContext.save()
+            self.favoriteMovie.remove(at: indexPath.row)
             debugPrint("successfully removed movie")
+            if favoriteMovie.count == 0 {
+                self.favoriteTableView.isHidden = true
+            } else {
+                self.favoriteTableView.reloadData()
+            }
         } catch {
             debugPrint("could not remove movie: \(error.localizedDescription)")
         }
     }
     
-
-   
-
+    func initMovie(atIndexPath indexPath: IndexPath) -> Movies{
+        let favoriteMovie = favoriteMovie[indexPath.row]
+        let movie = Movies(id: Int(favoriteMovie.movie_id), overview: favoriteMovie.movieOverview, posterPath: favoriteMovie.moviePosterPath, releaseDate: favoriteMovie.movieReleaseDate, title: favoriteMovie.movieTitle, voteAverage: favoriteMovie.movieVoteAverage)
+        return movie
+    }
 }

@@ -39,7 +39,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="QLc-dJ-FPU">
                                         <rect key="frame" x="0.0" y="60" width="205" height="55"/>
                                         <subviews>
-                                            <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdw-Na-33D" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
+                                            <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdw-Na-33D" customClass="CircularProgressBarView" customModule="Task_4" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d88-rN-uoP">
@@ -122,7 +122,7 @@
                 <outlet property="lblReleaseDate" destination="T2E-uB-4rx" id="p1j-2S-gNc"/>
                 <outlet property="lblTitle" destination="G2t-2w-aH2" id="KqQ-p5-C8w"/>
                 <outlet property="lblVoteAverage" destination="d88-rN-uoP" id="8DW-Wy-LYx"/>
-                <outlet property="movieRate" destination="bdw-Na-33D" id="ec9-Ih-m8U"/>
+                <outlet property="movieRate" destination="bdw-Na-33D" id="hUd-ok-9hY"/>
             </connections>
             <point key="canvasLocation" x="71.755725190839698" y="19.718309859154932"/>
         </tableViewCell>
