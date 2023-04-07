@@ -8,18 +8,25 @@
 import Foundation
 
 // MARK: - Response
-struct Response: Decodable {
+struct MoviesResponse: Codable {
     let page: Int?
-    let results: [Movies]?
+    let results: [Movie]?
 }
 
 // MARK: - Result
-struct Movies: Decodable {
+struct Movie: Codable {
     let id: Int?
-    let originalLanguage, originalTitle, overview: String?
-    let popularity: Double?
+    let overview: String?
     let posterPath, releaseDate, title: String?
     let voteAverage: Double?
-    let voteCount: Int?
+    
+    init(id: Int?, overview: String?, posterPath: String?, releaseDate: String?, title: String?, voteAverage: Double?) {
+        self.id = id
+        self.overview = overview
+        self.posterPath = posterPath
+        self.releaseDate = releaseDate
+        self.title = title
+        self.voteAverage = voteAverage
+    }
 }
 

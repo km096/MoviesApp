@@ -24,16 +24,6 @@
                             <constraint firstAttribute="height" constant="180" id="dhH-gp-f0a"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OQ7-qE-xnd" customClass="ArrowButoon" customModule="Task_4" customModuleProvider="target">
-                        <rect key="frame" x="355" y="122.66666666666667" width="7" height="7.0000000000000142"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="7" id="SnK-di-v73"/>
-                            <constraint firstAttribute="height" constant="7" id="zpH-bV-5Rn"/>
-                        </constraints>
-                        <color key="tintColor" systemColor="systemGrayColor"/>
-                        <state key="normal" title="Button"/>
-                        <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system"/>
-                    </button>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="0Fh-cN-ZsM">
                         <rect key="frame" x="140" y="2" width="205" height="230"/>
                         <subviews>
@@ -49,7 +39,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="7" translatesAutoresizingMaskIntoConstraints="NO" id="QLc-dJ-FPU">
                                         <rect key="frame" x="0.0" y="60" width="205" height="55"/>
                                         <subviews>
-                                            <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdw-Na-33D" customClass="UICircularProgressRing" customModule="UICircularProgressRing">
+                                            <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdw-Na-33D" customClass="CircularProgressBarView" customModule="Task_4" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d88-rN-uoP">
@@ -63,7 +53,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="55" id="6kQ-hK-gUd"/>
                                                     <constraint firstAttribute="height" constant="55" id="BXq-wg-V47"/>
@@ -117,34 +107,27 @@
                 </subviews>
                 <color key="backgroundColor" systemColor="systemGray6Color"/>
                 <constraints>
-                    <constraint firstItem="OQ7-qE-xnd" firstAttribute="leading" secondItem="0Fh-cN-ZsM" secondAttribute="trailing" constant="10" id="2JU-5c-FmV"/>
                     <constraint firstItem="mrQ-cZ-yWU" firstAttribute="top" secondItem="di0-Zb-1Mb" secondAttribute="top" constant="20" id="4sW-N2-Fs4"/>
-                    <constraint firstAttribute="rightMargin" secondItem="OQ7-qE-xnd" secondAttribute="right" constant="5" id="75j-Kb-tQn"/>
                     <constraint firstItem="0Fh-cN-ZsM" firstAttribute="leading" secondItem="mrQ-cZ-yWU" secondAttribute="trailing" constant="10" id="9US-Ep-fqr"/>
                     <constraint firstItem="mrQ-cZ-yWU" firstAttribute="leading" secondItem="di0-Zb-1Mb" secondAttribute="leading" constant="20" id="BQm-do-0Gy"/>
                     <constraint firstAttribute="bottom" secondItem="0Fh-cN-ZsM" secondAttribute="bottom" constant="20" id="G5m-nF-o2z"/>
-                    <constraint firstItem="OQ7-qE-xnd" firstAttribute="centerY" secondItem="di0-Zb-1Mb" secondAttribute="centerY" id="NlX-T5-VQM"/>
+                    <constraint firstAttribute="trailing" secondItem="0Fh-cN-ZsM" secondAttribute="trailing" constant="20" id="ajk-5x-wh5"/>
                     <constraint firstItem="0Fh-cN-ZsM" firstAttribute="top" secondItem="di0-Zb-1Mb" secondAttribute="top" constant="2" id="t4L-h0-xAx"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="S6k-oS-FJO"/>
             <connections>
-                <outlet property="goToDetailsBtn" destination="OQ7-qE-xnd" id="6BD-45-HNN"/>
                 <outlet property="imgPoster" destination="mrQ-cZ-yWU" id="r74-cP-KbM"/>
                 <outlet property="lblOverview" destination="5tl-aV-FG1" id="i8I-23-pXj"/>
                 <outlet property="lblReleaseDate" destination="T2E-uB-4rx" id="p1j-2S-gNc"/>
                 <outlet property="lblTitle" destination="G2t-2w-aH2" id="KqQ-p5-C8w"/>
                 <outlet property="lblVoteAverage" destination="d88-rN-uoP" id="8DW-Wy-LYx"/>
-                <outlet property="movieRate" destination="bdw-Na-33D" id="ec9-Ih-m8U"/>
+                <outlet property="movieRate" destination="bdw-Na-33D" id="hUd-ok-9hY"/>
             </connections>
-            <point key="canvasLocation" x="73" y="20"/>
+            <point key="canvasLocation" x="71.755725190839698" y="19.718309859154932"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="chevron.right" catalog="system" width="97" height="128"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemGray6Color">
             <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

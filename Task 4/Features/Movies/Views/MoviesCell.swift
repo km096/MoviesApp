@@ -16,24 +16,21 @@ class MoviesCell: UITableViewCell {
     @IBOutlet weak var lblReleaseDate: UILabel!
     @IBOutlet weak var lblOverview: UILabel!
     @IBOutlet weak var lblVoteAverage: UILabel!
-    @IBOutlet weak var movieRate: UICircularProgressRing!
-    @IBOutlet weak var goToDetailsBtn: UIButton!
+    @IBOutlet weak var movieRate: CircularProgressBarView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         imgPoster.roundCorner(cornerRadius: 15)
     }
 
-    func updateView(movie: Movies) {
+    func configureCell(movie: Movie) {
         lblTitle.text = movie.title
         lblReleaseDate.text = movie.releaseDate
         lblOverview.text = movie.overview
-        movieRate.value = (movie.voteAverage ?? 0) * 10
+        movieRate.rateValue = (movie.voteAverage ?? 0) / 10
         lblVoteAverage.text = String(describing: movie.voteAverage ?? 0)
         imgPoster.kf.setImage(with: URL(string: Api.baseImageUrl+(movie.posterPath ?? "")),
             options: [.cacheOriginalImage])
     }
 
-    
 }

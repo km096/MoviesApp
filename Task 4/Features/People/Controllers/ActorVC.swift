@@ -25,14 +25,13 @@ class ActorVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
 
-        setupActorInfo()
+        setActorInfo()
         collectionView.layer.cornerRadius = 15
-        imgActor.addShadow(containerView: containerView, color: UIColor.black.cgColor,
-            shadowOpacity: 0.5, shadowRadius: 5, cornerRadius: 15)
+        imgActor.addShadow(containerView, 0.5, 5, 15)
         
     }
     
-    func setupActorInfo () {
+    func setActorInfo () {
         lblName.text = actor?.name
         lblGender.text = "\(actor?.gender ?? 0)".localized
         lblKnownFor.text = actor?.knownForDepartment
@@ -43,7 +42,5 @@ class ActorVC: UIViewController {
     @IBAction func backBtnTapped(_ sender: Any) {
         dismissVC()
     }
-    
-
 }
 

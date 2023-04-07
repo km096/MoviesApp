@@ -29,4 +29,18 @@ extension UIViewController {
         dismiss(animated: false)
         
     }
+    
+    // Instantiate view controller and set the identifier as vc title
+    func instantiateVC<T: UIViewController>(appStoryboard: AppStoryboard, vc: T.Type) -> T {
+        let storyboard = UIStoryboard(name: appStoryboard.rawValue, bundle: nil)
+        let identifier = String(describing: vc.self)
+        return storyboard.instantiateViewController(withIdentifier: identifier) as! T
+    }
+    
+    // Set tabBar image and title 
+    func configureTabBarItem(_ title: String, _ image: UIImage!, selectedImage: UIImage!) {
+        self.tabBarItem.title = title
+        self.tabBarItem.image = image
+        self.tabBarItem.selectedImage = selectedImage
+    }
 }

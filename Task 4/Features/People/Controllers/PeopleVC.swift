@@ -21,22 +21,19 @@ class PeopleVC: UIViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
 
-        fetchData(endPoint: EndPoint.person)
+        getActorsData()
         
     }
     
-    func fetchData(endPoint: String) {
-        
-        let page: [String: Any] = ["language": LocalizationManager.sharedInstance.getCurrentLang(), "page": pageNumber+1]
-        ApiManager.sharedInstance.fetchApiData(url: Api.baseUrl+EndPoint.person, parameters: Api.baseParameters.merging(page, uniquingKeysWith: { (first, _) in first }),
-            responseModel: People.self) { response in
-
-            switch response {
-            case .success(let personResponse):
-                guard let personResponse = personResponse?.results else {return}
-
+    func getActorsData() {
+        let api: ActorsAPIProtocol = MoviesAPI()
+        api.getActors(target: .getActors, pageNum: ["page": pageNumber+1]) { result in
+            switch result {
+                
+            case .success(let response):
+                guard let response = response?.results else { return }
                 self.pageNumber += 1
-                self.person.append(contentsOf: personResponse)
+                self.person.append(contentsOf: response)
                 self.collectionView.reloadData()
             case .failure(let error):
                 print("Error: \(error)")
