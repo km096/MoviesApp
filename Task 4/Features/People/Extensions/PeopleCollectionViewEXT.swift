@@ -23,7 +23,7 @@ extension PeopleVC: UICollectionViewDelegate, UICollectionViewDataSource,
             let person = person[indexPath.row]
             cell.lblName.text = person.name
             cell.imgPersonPhoto.kf.setImage(with: URL(string: Api.baseImageUrl+(person.profilePath ?? "")), options: [.cacheOriginalImage] )
-            cell.imgPersonPhoto.addShadow(view: cell.contentView, shadowOpacity: 0.7, shadowRadius: 10, cornerRadius: 10)
+            cell.imgPersonPhoto.addShadow(cell.contentView, 0.7, 10, 10)
             
             // To recognize which cell is tapped
             let tap = UITapGestureRecognizer(target: self, action: #selector(tapHandle))
@@ -40,7 +40,7 @@ extension PeopleVC: UICollectionViewDelegate, UICollectionViewDataSource,
 
         // Add pagination to collectioView
         if indexPath.row == person.count - 3 {
-            fetchData(endPoint: EndPoint.person)
+            getActorsData()
         }
     }
     

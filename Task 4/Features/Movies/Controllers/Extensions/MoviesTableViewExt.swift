@@ -32,19 +32,8 @@ extension MoviesVC: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         
         // Add pagination
-        switch moviesSegmentedControl.selectedSegmentIndex {
-        case 0 :
-            if indexPath.row == currentMovies.movie.count - 3 {
-                fetchData(endPoint: EndPoint.popular)
-            }
-        case 1:
-            if indexPath.row == currentMovies.movie.count - 3 {
-                fetchData(endPoint: EndPoint.upcoming)
-            }
-        default:
-            if indexPath.row == currentMovies.movie.count - 3 {
-                fetchData(endPoint: EndPoint.nowPlaying)
-            }
+        if indexPath.row == currentMovies.movie.count - 3 {
+            getMoviesAPI()
         }
         
         // Add animation to tableView

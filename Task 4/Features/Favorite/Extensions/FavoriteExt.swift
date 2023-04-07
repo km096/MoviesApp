@@ -16,7 +16,7 @@ extension FavoriteMoviesVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueCell() as MoviesCell
-        cell.configureCell(movie: initMovie(atIndexPath: indexPath))
+        cell.configureCell(movie: toMovie(atIndexPath: indexPath))
         return cell
     }
     
@@ -24,7 +24,7 @@ extension FavoriteMoviesVC: UITableViewDelegate, UITableViewDataSource {
         let storyboard = UIStoryboard(name: "Movies", bundle: nil)
         guard let detailsVC = storyboard.instantiateViewController(withIdentifier: "DetailsVC")
                 as? DetailsVC else {return}
-        detailsVC.movie = initMovie(atIndexPath: indexPath)
+        detailsVC.movie = toMovie(atIndexPath: indexPath)
         presestVC(detailsVC)
     }
     

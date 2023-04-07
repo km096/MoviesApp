@@ -6,12 +6,28 @@
 //
 
 import UIKit
+import CoreData
 
 class MainTabBar: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTabBar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        updateBadge()
+    }
+    
+    override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
+        updateBadge()
+    }
+    
+    func updateBadge() {
+        if let tabBarItems = self.tabBar.items {
+            let tabItem = tabBarItems[2]
+            tabItem.badgeValue = "\(getFavoriteMoviesCount())"
+        }
     }
     
     func configureTabBar() {
@@ -25,6 +41,19 @@ class MainTabBar: UITabBarController {
         favoriteVC.configureTabBarItem("favorite".localized, UIImage(systemName: "heart"), selectedImage: UIImage(systemName: "heart.fill"))
         
         self.setViewControllers([moviesVC, peopleVC, favoriteVC], animated: false)
+    }
+    
+    func getFavoriteMoviesCount() -> Int {
+        let mangedcontext = appDelegate?.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<FavoriteMovie>(entityName: "FavoriteMovie")
+        
+        do {
+            let count = try mangedcontext?.count(for: fetchRequest)
+            return count!
+        } catch {
+            debugPrint("could not get count: \(error.localizedDescription)")
+            return 0
+        }
     }
 
 }

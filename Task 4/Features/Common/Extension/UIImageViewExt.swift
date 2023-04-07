@@ -18,7 +18,7 @@ extension UIImageView {
     }
     
     // Add shadow
-    func addShadow(view: UIView, shadowOpacity: Float, shadowRadius: Double, cornerRadius: CGFloat) {
+    func addShadow(_ view: UIView, _ shadowOpacity: Float, _ shadowRadius: Double, _ cornerRadius: CGFloat) {
         
         view.layer.masksToBounds = false
         view.layer.shadowColor = UIColor.black.cgColor
@@ -26,7 +26,7 @@ extension UIImageView {
         view.layer.shadowOffset = .zero
         view.layer.shadowRadius = shadowRadius
         view.backgroundColor = .clear
-        view.layer.shadowPath = UIBezierPath(rect: view.bounds).cgPath
+//        view.layer.shadowPath = UIBezierPath(rect: view.bounds).cgPath
         
         layer.cornerRadius = cornerRadius
         contentMode = .scaleAspectFill

@@ -23,7 +23,7 @@ class MoviesCell: UITableViewCell {
         imgPoster.roundCorner(cornerRadius: 15)
     }
 
-    func configureCell(movie: Movies) {
+    func configureCell(movie: Movie) {
         lblTitle.text = movie.title
         lblReleaseDate.text = movie.releaseDate
         lblOverview.text = movie.overview

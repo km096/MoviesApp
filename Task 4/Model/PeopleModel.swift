@@ -8,7 +8,7 @@
 import Foundation
 
 // MARK: - People
-struct People: Decodable {
+struct People: Codable {
     let page: Int?
     let results: [Person]?
     let totalPages, totalResults: Int?
@@ -21,7 +21,7 @@ struct People: Decodable {
 }
 
 // MARK: - Result
-struct Person: Decodable {
+struct Person: Codable {
     let adult: Bool?
     let gender, id: Int?
     let knownFor: [KnownFor]?
@@ -40,7 +40,7 @@ struct Person: Decodable {
 }
 
 // MARK: - KnownFor
-struct KnownFor: Decodable {
+struct KnownFor: Codable {
     let backdropPath, firstAirDate: String?
     let genreIDS: [Int]?
     let id: Int?

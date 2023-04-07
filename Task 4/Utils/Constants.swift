@@ -23,8 +23,19 @@ struct EndPoint {
 
 }
 
+enum EndPoints {
+    case popular
+    case upcoming
+    case nowPlaying
+}
+
 enum AppStoryboard: String {
     case movies = "Movies"
     case people = "People"
     case favorite = "Favorite"
+}
+
+
+struct ErrorMessage {
+    static let error = "Somthing went wrong please try again later"
 }

@@ -11,6 +11,8 @@ import Kingfisher
 import MOLH
 import CoreData
 
+
+
 let appDelegate = UIApplication.shared.delegate as? AppDelegate
 
 class MoviesVC: UIViewController {
@@ -25,11 +27,12 @@ class MoviesVC: UIViewController {
     var upcomingMovies = MovieList()
     var nowPlayingMovies = MovieList()
     
-    var filteredMovies = [Movies]()
+    var filteredMovies = [Movie]()
     var isFiltered = false
     
     var rate: (Float, Float) = (0, 10)
     
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,33 +43,29 @@ class MoviesVC: UIViewController {
         tableView.registerNib(cell: MoviesCell.self)
         
         txtSearchField.delegate = self
-
-        // Popular movies is first segment
-        fetchData(endPoint: EndPoint.popular)
         
         moviesSegmentedControl.addTitle(titles: ["popular".localized, "upcoming".localized, "nowPlaying".localized])
+        
+      getMoviesAPI()
     }
     
-    func fetchData(endPoint: String) {
-        let parameters: [String: Any] = ["language": LocalizationManager.sharedInstance.getCurrentLang(), "page": currentMovies.pageNumber+1]
+    func getMoviesAPI() {
+        let api: MoviesAPIProtocol = MoviesAPI()
+        api.getMovies(target: setEndPoint(), pageNum: ["page": currentMovies.pageNumber+1]) { result in
+            switch result {
+            case .success(let response):
+                guard let movies = response?.results else { return }
+                switch self.moviesSegmentedControl.selectedSegmentIndex {
+                case 0:
+                    self.updateMovieList(movie: &self.popularMovies, movies: movies)
+                case 1:
+                    self.updateMovieList(movie: &self.upcomingMovies, movies: movies)
+                case 2:
+                    self.updateMovieList(movie: &self.nowPlayingMovies, movies: movies)
 
-        ApiManager.sharedInstance.fetchApiData(url: Api.baseUrl+endPoint, parameters: Api.baseParameters.merging(parameters, uniquingKeysWith: {(first, _) in first}), responseModel: Response.self) { response in
-            switch response {
-            case .success(let moviesResponse):
-                guard let movies = moviesResponse?.results else {return}
-
-                // Increment page num and append fetched movies list to the propper segment movie list
-                if endPoint == EndPoint.popular {
-                    self.popularMovies.pageNumber += 1
-                    self.popularMovies.movie.append(contentsOf: movies)
-                } else if endPoint == EndPoint.upcoming {
-                    self.upcomingMovies.pageNumber += 1
-                    self.upcomingMovies.movie.append(contentsOf: movies)
-                } else if endPoint == EndPoint.nowPlaying {
-                    self.nowPlayingMovies.pageNumber += 1
-                    self.nowPlayingMovies.movie.append(contentsOf: movies)
+                default:
+                    self.updateMovieList(movie: &self.popularMovies, movies: movies)
                 }
-                
                 // Increment page num and append fetched movies list to the current selected segment movie list
                 self.currentMovies.movie.append(contentsOf: movies)
                 self.currentMovies.pageNumber += 1
@@ -76,14 +75,33 @@ class MoviesVC: UIViewController {
                 if !self.txtSearchField.text!.isEmpty {
                     self.filterByTitle(self.txtSearchField.text ?? "")
                 }
-                
                 // Apply filter by rate on the new fetched movies if the user set a rate range not from 0 to 10
                 if(self.rate.0 != 0 || self.rate.1 != 10){
                     self.filterByRate()
                 }
+                
             case .failure(let error):
-                print("Error: \(error)")
+                print(error.localizedDescription)
             }
+        }
+    }
+    
+    func updateMovieList(movie: inout MovieList, movies: [Movie]) {
+        movie.pageNumber += 1
+        movie.movie.append(contentsOf: movies)
+        
+    }
+    
+    func setEndPoint() -> Networking {
+        switch moviesSegmentedControl.selectedSegmentIndex {
+        case 0 :
+            return .getPopularMovies
+        case 1:
+            return .getUpcomingMovies
+        case 2:
+            return .getNowPlayingMovies
+        default:
+            return .getPopularMovies
         }
     }
     
@@ -93,12 +111,12 @@ class MoviesVC: UIViewController {
     }
     
     // Load selected movie list
-    func segmentMovieList (movieList: MovieList, endPoint: String) {
+    func loadMovieList (movieList: MovieList) {
         self.currentMovies.movie = movieList.movie
         self.currentMovies.pageNumber = movieList.pageNumber
         
         if movieList.pageNumber == 0 {
-            fetchData(endPoint: endPoint)
+            getMoviesAPI()
         } else {
             tableView.reloadData()
         }
@@ -111,14 +129,15 @@ class MoviesVC: UIViewController {
     @IBAction func segmentChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            segmentMovieList(movieList: popularMovies, endPoint: EndPoint.popular)
+            loadMovieList(movieList: popularMovies)
         case 1:
-            segmentMovieList(movieList: upcomingMovies, endPoint: EndPoint.upcoming)
+            loadMovieList(movieList: upcomingMovies)
         case 2:
-            segmentMovieList(movieList: nowPlayingMovies, endPoint: EndPoint.nowPlaying)
+            loadMovieList(movieList: nowPlayingMovies)
         default:
             print("error")
         }
+        print(sender.selectedSegmentIndex)
     }
     
     // Show bottom sheet with rate range slider
@@ -133,6 +152,5 @@ class MoviesVC: UIViewController {
         }
         self.present(vc, animated: true)
     }
-    
 }
 

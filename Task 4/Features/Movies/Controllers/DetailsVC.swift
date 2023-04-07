@@ -20,15 +20,15 @@ class DetailsVC: UIViewController {
     @IBOutlet weak var ratingStars: CosmosView!
     @IBOutlet weak var addToFavoriteBtn: UIButton!
     
-    var movie: Movies?
+    var movie: Movie?
     var isFavorite: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        configureMovieDetails()
+        setMovieDetails()
         setRatingStars()
-        imgPoster.addShadow(view: containerView, shadowOpacity: 0.7, shadowRadius: 15, cornerRadius: 13)
+        imgPoster.addShadow(containerView, 0.7, 15, 13)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,10 +41,9 @@ class DetailsVC: UIViewController {
         } else {
             addToFavoriteBtn.setImage(UIImage(systemName: "heart"), for: .normal)
         }
-        
     }
     
-    func configureMovieDetails() {
+    func setMovieDetails() {
         let imageUrl = URL(string: Api.baseImageUrl+(movie?.posterPath ?? ""))
         lblTitle.text = movie?.title
         lblOverview.text = movie?.overview
@@ -79,14 +78,8 @@ class DetailsVC: UIViewController {
     // Save the movie in favorite list
     func saveFavoriteMovieData() {
         guard let mangedContext = appDelegate?.persistentContainer.viewContext else { return }
-        let favoriteMovie = FavoriteMovie(context: mangedContext)
-        favoriteMovie.movieTitle = movie?.title
-        favoriteMovie.movieReleaseDate = movie?.releaseDate
-        favoriteMovie.movieOverview = movie?.overview
-        favoriteMovie.movieVoteAverage = (movie?.voteAverage)!
-        favoriteMovie.movie_id = Int32((movie?.id)!)
-        favoriteMovie.moviePosterPath = ((movie?.posterPath)!)
-        
+        let favoriteMovie = movie?.toFavoriteMovie(mangedContext)
+
         do {
             try mangedContext.save()
             isFavorite = true
@@ -95,7 +88,6 @@ class DetailsVC: UIViewController {
         } catch {
             debugPrint("could not save data: \(error.localizedDescription)")
         }
-        
     }
     
     // Remove the movie from favorite list

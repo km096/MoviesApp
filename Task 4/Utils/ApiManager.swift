@@ -13,22 +13,27 @@ class ApiManager {
     static let sharedInstance = ApiManager()
     private init() {}
 
-     func fetchApiData<T: Decodable>(url: String, parameters: Parameters , responseModel: T.Type, completion: @escaping (Result<T?, NSError>) -> Void ) {
-        AF.request(url, method: .get, parameters: parameters, encoding:URLEncoding.default)
-            .validate().responseData { response in
+     func getApiData<T: Decodable>(url: String, parameters: Parameters , responseModel: T.Type, completion: @escaping (Result<T?, NSError>) -> Void ) {
+         
+        AF.request(url, method: .get, parameters: parameters).validate().responseData { response in
+            
             switch response.result {
             case .success(_):
-                guard let data = response.data else {return}
+                
+                guard let data = response.data else { return }
+                
                 do {
                     let decoder = JSONDecoder()
                     decoder.keyDecodingStrategy = .convertFromSnakeCase
                     let responseData = try decoder.decode(T.self, from: data)
+
                     completion(.success(responseData))
                 } catch {
-                    print(error)
+                    debugPrint(error.localizedDescription)
                 }
+                
             case .failure(let error):
-                print("Error: \(error)")
+                debugPrint("Error: \(error.localizedDescription)")
             }
         }
     }
