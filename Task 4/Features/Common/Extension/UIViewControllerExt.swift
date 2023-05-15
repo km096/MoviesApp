@@ -38,7 +38,7 @@ extension UIViewController {
     }
     
     // Set tabBar image and title 
-    func configureTabBarItem(_ title: String, _ image: UIImage!, selectedImage: UIImage!) {
+    func setTabBarItem(_ title: String, _ image: UIImage!, selectedImage: UIImage!) {
         self.tabBarItem.title = title
         self.tabBarItem.image = image
         self.tabBarItem.selectedImage = selectedImage
