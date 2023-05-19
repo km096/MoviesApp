@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pXn-gH-cFg">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ProfileVC-->
+        <scene sceneID="1xu-mn-QVS">
+            <objects>
+                <viewController storyboardIdentifier="ProfileVC" modalPresentationStyle="fullScreen" id="pXn-gH-cFg" customClass="ProfileVC" customModule="MovieApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Izs-A7-Sj3">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELCOME" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jLz-YJ-dIK">
+                                <rect key="frame" x="133.33333333333334" y="410.33333333333331" width="126.33333333333334" height="31.333333333333314"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nTr-Im-h5x">
+                                <rect key="frame" x="20" y="349" width="353" height="154"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are not loggedin, Please login first" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aqg-5X-e10">
+                                        <rect key="frame" x="0.0" y="0.0" width="353" height="79.333333333333329"/>
+                                        <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="29"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eyh-jg-pBp" customClass="RoundedUIButton" customModule="MovieApp" customModuleProvider="target">
+                                        <rect key="frame" x="136.66666666666666" y="119.33333333333331" width="80" height="35"/>
+                                        <color key="backgroundColor" red="0.1960784314" green="0.4549019608" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="qoG-RW-GAl"/>
+                                        </constraints>
+                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Login"/>
+                                        <connections>
+                                            <action selector="loginBtnTapped:" destination="pXn-gH-cFg" eventType="touchUpInside" id="egK-Bb-2Bh"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="aqg-5X-e10" firstAttribute="leading" secondItem="nTr-Im-h5x" secondAttribute="leading" id="GGg-lF-Bvm"/>
+                                    <constraint firstItem="eyh-jg-pBp" firstAttribute="top" secondItem="aqg-5X-e10" secondAttribute="bottom" constant="40" id="Kip-4V-ouV"/>
+                                    <constraint firstItem="eyh-jg-pBp" firstAttribute="centerX" secondItem="nTr-Im-h5x" secondAttribute="centerX" id="NJN-vX-W2N"/>
+                                    <constraint firstItem="aqg-5X-e10" firstAttribute="top" secondItem="nTr-Im-h5x" secondAttribute="top" id="cYP-HM-9FM"/>
+                                    <constraint firstAttribute="trailing" secondItem="aqg-5X-e10" secondAttribute="trailing" id="scd-2C-MNR"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOc-FE-n6E" customClass="RoundedUIButton" customModule="MovieApp" customModuleProvider="target">
+                                <rect key="frame" x="156.66666666666666" y="768" width="80" height="50"/>
+                                <color key="backgroundColor" red="0.1960784314" green="0.4549019608" blue="0.7725490196" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Logout"/>
+                                <connections>
+                                    <action selector="logoutBtnTapped:" destination="pXn-gH-cFg" eventType="touchUpInside" id="2DD-eu-kHm"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="o8Q-VX-reE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="HOc-FE-n6E" firstAttribute="height" secondItem="Izs-A7-Sj3" secondAttribute="height" multiplier="0.0586854" id="3k0-ze-uc4"/>
+                            <constraint firstItem="HOc-FE-n6E" firstAttribute="centerX" secondItem="Izs-A7-Sj3" secondAttribute="centerX" id="4gK-1B-Qex"/>
+                            <constraint firstItem="HOc-FE-n6E" firstAttribute="bottom" secondItem="o8Q-VX-reE" secondAttribute="bottom" id="EOr-wf-ikO"/>
+                            <constraint firstItem="nTr-Im-h5x" firstAttribute="leading" secondItem="Izs-A7-Sj3" secondAttribute="leading" constant="20" id="Jsl-yZ-23j"/>
+                            <constraint firstItem="nTr-Im-h5x" firstAttribute="centerY" secondItem="Izs-A7-Sj3" secondAttribute="centerY" id="RnV-Td-4hj"/>
+                            <constraint firstItem="HOc-FE-n6E" firstAttribute="width" secondItem="Izs-A7-Sj3" secondAttribute="width" multiplier="0.203562" id="YDl-WR-z7X"/>
+                            <constraint firstItem="jLz-YJ-dIK" firstAttribute="centerY" secondItem="Izs-A7-Sj3" secondAttribute="centerY" id="ZOk-1i-yyv"/>
+                            <constraint firstAttribute="trailing" secondItem="nTr-Im-h5x" secondAttribute="trailing" constant="20" id="rAy-mj-QK6"/>
+                            <constraint firstItem="nTr-Im-h5x" firstAttribute="height" secondItem="Izs-A7-Sj3" secondAttribute="height" multiplier="0.180751" id="rEx-8j-Exx"/>
+                            <constraint firstItem="jLz-YJ-dIK" firstAttribute="centerX" secondItem="Izs-A7-Sj3" secondAttribute="centerX" id="wgz-6r-5id"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="vde-fc-ARg"/>
+                    <connections>
+                        <outlet property="loginView" destination="nTr-Im-h5x" id="Mdu-AG-sj3"/>
+                        <outlet property="logoutBtn" destination="HOc-FE-n6E" id="7Ns-xF-emd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ko6-ia-IUK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-772" y="4"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
